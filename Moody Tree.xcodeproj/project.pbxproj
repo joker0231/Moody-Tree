@@ -146,16 +146,15 @@
 		F322A2E52B1F0C33009EAEAB /* Moody Tree */ = {
 			isa = PBXGroup;
 			children = (
-				F3A201622B23956D0083C06C /* 3DTree */,
-				F3A2015C2B2374170083C06C /* Choose Mood */,
+				F3A201692B2456D50083C06C /* Front Page */,
+				F3A201682B2456B70083C06C /* Personal Center */,
+				F3A201672B2456910083C06C /* Chart */,
+				F3A201662B24566A0083C06C /* Calendar */,
+				F3A201652B2456340083C06C /* ChooseMood */,
 				F3A201582B2241B40083C06C /* RecordPreview */,
 				F3A201552B223FDC0083C06C /* Create Record */,
-				F3A201502B2217EB0083C06C /* Calendar */,
 				F3A2014B2B20D0150083C06C /* Config Page */,
-				F3A2013E2B205AC80083C06C /* Chart */,
 				F3A2013B2B20584A0083C06C /* Annual Statistics */,
-				F322A31D2B1F4C4C009EAEAB /* Personal Center */,
-				F322A31C2B1F4C26009EAEAB /* Front Page */,
 				F322A2E62B1F0C33009EAEAB /* Moody_TreeApp.swift */,
 				F322A2E82B1F0C33009EAEAB /* ContentView.swift */,
 				F322A2EA2B1F0C34009EAEAB /* Assets.xcassets */,
@@ -190,25 +189,6 @@
 			path = "Moody TreeUITests";
 			sourceTree = "<group>";
 		};
-		F322A31C2B1F4C26009EAEAB /* Front Page */ = {
-			isa = PBXGroup;
-			children = (
-				F322A3132B1F1F8C009EAEAB /* FrontPage.swift */,
-				F322A3192B1F3A93009EAEAB /* PlusButton.swift */,
-				F322A3112B1F1D81009EAEAB /* CardView.swift */,
-			);
-			name = "Front Page";
-			sourceTree = "<group>";
-		};
-		F322A31D2B1F4C4C009EAEAB /* Personal Center */ = {
-			isa = PBXGroup;
-			children = (
-				F322A31E2B1F4C6E009EAEAB /* PersonalPage.swift */,
-				F322A3202B1F57C8009EAEAB /* DataBlock.swift */,
-			);
-			name = "Personal Center";
-			sourceTree = "<group>";
-		};
 		F3A201292B1F858C0083C06C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,17 +205,6 @@
 			path = "Annual Statistics";
 			sourceTree = "<group>";
 		};
-		F3A2013E2B205AC80083C06C /* Chart */ = {
-			isa = PBXGroup;
-			children = (
-				F322A3222B1F5ACA009EAEAB /* BarChart.swift */,
-				F3A2013F2B205AF00083C06C /* LineChart.swift */,
-				F3A201412B2060860083C06C /* PieChart.swift */,
-				F3A201492B20CB800083C06C /* RadarChart.swift */,
-			);
-			name = Chart;
-			sourceTree = "<group>";
-		};
 		F3A2014B2B20D0150083C06C /* Config Page */ = {
 			isa = PBXGroup;
 			children = (
@@ -243,15 +212,6 @@
 				F3A2014E2B20D9040083C06C /* CustomPopup.swift */,
 			);
 			path = "Config Page";
-			sourceTree = "<group>";
-		};
-		F3A201502B2217EB0083C06C /* Calendar */ = {
-			isa = PBXGroup;
-			children = (
-				F3A201512B2218020083C06C /* Calendar.swift */,
-				F3A201532B223A860083C06C /* Note.swift */,
-			);
-			name = Calendar;
 			sourceTree = "<group>";
 		};
 		F3A201552B223FDC0083C06C /* Create Record */ = {
@@ -270,19 +230,51 @@
 			path = RecordPreview;
 			sourceTree = "<group>";
 		};
-		F3A2015C2B2374170083C06C /* Choose Mood */ = {
+		F3A201652B2456340083C06C /* ChooseMood */ = {
 			isa = PBXGroup;
 			children = (
 				F3A2015D2B2374350083C06C /* ChooseMood.swift */,
 			);
-			name = "Choose Mood";
+			path = ChooseMood;
 			sourceTree = "<group>";
 		};
-		F3A201622B23956D0083C06C /* 3DTree */ = {
+		F3A201662B24566A0083C06C /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
+				F3A201512B2218020083C06C /* Calendar.swift */,
+				F3A201532B223A860083C06C /* Note.swift */,
 			);
-			path = 3DTree;
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		F3A201672B2456910083C06C /* Chart */ = {
+			isa = PBXGroup;
+			children = (
+				F322A3222B1F5ACA009EAEAB /* BarChart.swift */,
+				F3A2013F2B205AF00083C06C /* LineChart.swift */,
+				F3A201412B2060860083C06C /* PieChart.swift */,
+				F3A201492B20CB800083C06C /* RadarChart.swift */,
+			);
+			path = Chart;
+			sourceTree = "<group>";
+		};
+		F3A201682B2456B70083C06C /* Personal Center */ = {
+			isa = PBXGroup;
+			children = (
+				F322A31E2B1F4C6E009EAEAB /* PersonalPage.swift */,
+				F322A3202B1F57C8009EAEAB /* DataBlock.swift */,
+			);
+			path = "Personal Center";
+			sourceTree = "<group>";
+		};
+		F3A201692B2456D50083C06C /* Front Page */ = {
+			isa = PBXGroup;
+			children = (
+				F322A3132B1F1F8C009EAEAB /* FrontPage.swift */,
+				F322A3192B1F3A93009EAEAB /* PlusButton.swift */,
+				F322A3112B1F1D81009EAEAB /* CardView.swift */,
+			);
+			path = "Front Page";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
