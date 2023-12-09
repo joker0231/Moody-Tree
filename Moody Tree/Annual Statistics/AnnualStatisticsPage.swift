@@ -74,7 +74,7 @@ struct AnnualStatisticsView: View {
                         }
                             .background(Color(red: 247/255, green: 251/255, blue: 246/255))
                             .cornerRadius(10)
-                            .padding(.horizontal, 25)
+                            .padding(.horizontal,20)
                             .shadow(radius: 5)
                         
                         // 月度情绪统计
@@ -85,7 +85,7 @@ struct AnnualStatisticsView: View {
                         }
                             .background(Color(red: 247/255, green: 251/255, blue: 246/255))
                             .cornerRadius(10)
-                            .padding(.horizontal, 25)
+                            .padding(.horizontal,20)
                             .shadow(radius: 5)
                         
                         // 月度情绪统计
@@ -96,7 +96,7 @@ struct AnnualStatisticsView: View {
                         }
                             .background(Color(red: 247/255, green: 251/255, blue: 246/255))
                             .cornerRadius(10)
-                            .padding(.horizontal, 25)
+                            .padding(.horizontal,20)
                             .shadow(radius: 5)
                     }
                 }

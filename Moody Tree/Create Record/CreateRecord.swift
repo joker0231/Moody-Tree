@@ -75,7 +75,7 @@ struct CreatePageView: View {
                                     TextField("标题", text: $titleText)
                                         .font(.system(size: 22, weight: .bold))
                                         .padding(.horizontal, 10)
-                                        .frame(width: 320)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8)
                                 }
                                 
                                 Divider().frame(height: 1).background(Color("7B8B6F"))
@@ -84,7 +84,7 @@ struct CreatePageView: View {
                                 ScrollView {
                                     TextEditor(text: $descriptionText)
                                         .font(.system(size: 16))
-                                        .frame(width: 320, height: 430)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8, height:UIScreen.main.bounds.height * 0.6)
                                         .background(Color.clear)
                                         .multilineTextAlignment(.leading)
                                         .lineSpacing(10)
@@ -107,7 +107,7 @@ struct CreatePageView: View {
                                 // 按钮区域
                                 HStack(spacing: 15) {
                                     RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: 230, height: 40)
+                                        .frame(width: UIScreen.main.bounds.width * 0.6, height: 40)
                                         .foregroundColor(Color(hex: "849B80"))
                                         .overlay(
                                             HStack(spacing: 5) {
@@ -129,7 +129,7 @@ struct CreatePageView: View {
                                         )
 
                                     RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: 63, height: 40)
+                                        .frame(width: UIScreen.main.bounds.width * 0.18, height: 40)
                                         .foregroundColor(Color(hex: "849B80"))
                                         .overlay(
                                             Button("保存") {
@@ -145,6 +145,7 @@ struct CreatePageView: View {
                             .background(Color.white.cornerRadius(10))
                         }
                         .padding(.horizontal)
+                        .frame(height: UIScreen.main.bounds.height * 0.9)
                     }
                 }
             }

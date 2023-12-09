@@ -65,70 +65,73 @@ struct ConfigPageView: View {
                         }
                             .padding(.horizontal)
                         
-                        VStack(alignment: .leading, spacing: 20) {
-                            SettingsItem(title: "昵称", description: "昵称"){
-                                // 点击昵称的操作
-                                isNicknameAlertPresented.toggle()
+                        VStack{
+                            VStack(alignment: .leading, spacing: 20) {
+                                SettingsItem(title: "昵称", description: "昵称"){
+                                    // 点击昵称的操作
+                                    isNicknameAlertPresented.toggle()
+                                }
+                                    .padding(.top, 5)
+                                SettingsItem(title: "反馈", description: "如果您发现任何错误或者其他问题，请告诉小树噢"){
+                                    // 点击反馈的操作
+                                    isFeedbackAlertPresented.toggle()
+                                }
+                                SettingsItem(title: "评价小树", description: "如果你喜欢小树，请给小树5颗星🌟"){
+                                    // 点击评价的操作
+                                }
+                                SettingsItem(title: "关于", description: ""){
+                                    // 点击关于的操作
+                                    isAboutAlertPresented.toggle()
+                                }
+                                Spacer()
                             }
-                                .padding(.top, 5)
-                            SettingsItem(title: "反馈", description: "如果您发现任何错误或者其他问题，请告诉小树噢"){
-                                // 点击反馈的操作
-                                isFeedbackAlertPresented.toggle()
-                            }
-                            SettingsItem(title: "评价小树", description: "如果你喜欢小树，请给小树5颗星🌟"){
-                                // 点击评价的操作
-                            }
-                            SettingsItem(title: "关于", description: ""){
-                                // 点击关于的操作
-                                isAboutAlertPresented.toggle()
-                            }
-                            Spacer()
+                                .padding(20)
+                                .cornerRadius(10)
+                                .background(Color.white.cornerRadius(10))
+                                .overlay(
+                                    CustomPopup(
+                                        title: "新的名字叫什么好呢？",
+                                        content:
+                                            TextField("小树的名字", text: $newNickname)
+                                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                                .padding()
+                                        ,
+                                        isPresented: $isNicknameAlertPresented
+                                    )
+                                    .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
+                                )
+                                .overlay(
+                                    CustomPopup(
+                                        title: "反馈",
+                                        content: Text("如果有任何问题，请发送邮件到xxxxx@qq.com，开发者会马不停蹄的处理掉一切BUG！"),
+                                        isPresented: $isFeedbackAlertPresented
+                                    )
+                                    .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
+                                )
+                                .overlay(
+                                    CustomPopup(
+                                        title: "关于",
+                                        content:
+                                            VStack(spacing: 5){
+                                                Text("🍃你能告诉我更多关于Moody Tree和你的事情吗？")
+                                                    .padding(.bottom,5)
+                                                Text("👆我的名字是crystal，目前是中国华中师范大学的一名大四学生。Moody Tree作为我的毕业设计诞生于2023年，设计它的初衷是由于在毕业寻找工作的过程中遭受了一些负面情绪的困扰，也因此产生了一些心理问题，我希望能够有这样的一个软件能够帮助到更多和我一样有类似困扰的人们。")
+                                                    .padding(.bottom,15)
+                                                Text("🍃我喜欢Moody Tree，我能做些什么来支持它？")
+                                                    .padding(.bottom,5)
+                                                Text("👆首先感谢您的支持，支持小树最棒的方式是与您的朋友，家人或者任何需要帮助的人们分享它，在APP Store中留下五星评价也能够帮助其他用户发现Moody Tree。")
+                                                    .padding(.bottom,15)
+                                                Text("🍃我想让Moody Tree变得更好，如何告诉你呢？")
+                                                    .padding(.bottom,5)
+                                                Text("👆您可以发送邮件到xxxxxx@qq.com向我发送反馈噢。")
+                                            }
+                                                .multilineTextAlignment(.leading),
+                                        isPresented: $isAboutAlertPresented
+                                    )
+                                    .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
+                                )
                         }
-                            .padding(20)
-                            .cornerRadius(10)
-                            .background(Color.white.cornerRadius(10))
-                            .overlay(
-                                CustomPopup(
-                                    title: "新的名字叫什么好呢？",
-                                    content:
-                                        TextField("小树的名字", text: $newNickname)
-                                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                                            .padding()
-                                    ,
-                                    isPresented: $isNicknameAlertPresented
-                                )
-                                .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
-                            )
-                            .overlay(
-                                CustomPopup(
-                                    title: "反馈",
-                                    content: Text("如果有任何问题，请发送邮件到xxxxx@qq.com，开发者会马不停蹄的处理掉一切BUG！"),
-                                    isPresented: $isFeedbackAlertPresented
-                                )
-                                .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
-                            )
-                            .overlay(
-                                CustomPopup(
-                                    title: "关于",
-                                    content:
-                                        VStack(spacing: 5){
-                                            Text("🍃你能告诉我更多关于Moody Tree和你的事情吗？")
-                                                .padding(.bottom,5)
-                                            Text("👆我的名字是crystal，目前是中国华中师范大学的一名大四学生。Moody Tree作为我的毕业设计诞生于2023年，设计它的初衷是由于在毕业寻找工作的过程中遭受了一些负面情绪的困扰，也因此产生了一些心理问题，我希望能够有这样的一个软件能够帮助到更多和我一样有类似困扰的人们。")
-                                                .padding(.bottom,15)
-                                            Text("🍃我喜欢Moody Tree，我能做些什么来支持它？")
-                                                .padding(.bottom,5)
-                                            Text("👆首先感谢您的支持，支持小树最棒的方式是与您的朋友，家人或者任何需要帮助的人们分享它，在APP Store中留下五星评价也能够帮助其他用户发现Moody Tree。")
-                                                .padding(.bottom,15)
-                                            Text("🍃我想让Moody Tree变得更好，如何告诉你呢？")
-                                                .padding(.bottom,5)
-                                            Text("👆您可以发送邮件到xxxxxx@qq.com向我发送反馈噢。")
-                                        }
-                                            .multilineTextAlignment(.leading),
-                                    isPresented: $isAboutAlertPresented
-                                )
-                                .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
-                            )
+                        .padding(.horizontal, 10)
                     }
                 }
             }

@@ -22,7 +22,7 @@ struct ChooseMoodView: View {
                 // 升起弹窗
                 isSheetPresented.toggle()
             }) {
-                Text(selectedMood != nil ? "今天是\(selectedMood!)的🌲" : "为今天的自己选择心情吧")
+                Text(selectedMood != nil ? "今天是\(selectedMood!)的🌲" : "为今天选择心情吧")
                     .font(.system(size: 14))
                     .foregroundColor(Color("F7FBF6"))
             }
@@ -30,7 +30,7 @@ struct ChooseMoodView: View {
         .sheet(isPresented: $isSheetPresented) {
             // 这里放你的底部弹窗的内容
             BottomSheetView(isSheetPresented: $isSheetPresented, selectedMood: $selectedMood)
-                .presentationDetents([.height(350)])
+                .presentationDetents([.height(UIScreen.main.bounds.height * 0.5)])
         }
     }
 }
@@ -55,7 +55,7 @@ struct BottomSheetView: View {
                     Text("请选择你的心情")
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(Color("144805"))
-                        .padding(.trailing, 20)
+                        .padding(.trailing, 10)
                 }
                 Spacer()
             }

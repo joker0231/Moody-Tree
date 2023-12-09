@@ -35,7 +35,7 @@ struct RecordPreviewView: View {
                                     .foregroundColor(Color("F7FBF6")) // 设置箭头颜色
                                     .padding(.leading)
                                 
-                                Text("")
+                                Text("返回")
                                     .font(.system(size: 20, weight: .bold))
                                     .foregroundColor(Color("F7FBF6"))
                                     .padding(.trailing, 20)
@@ -80,12 +80,12 @@ struct RecordPreviewView: View {
                                 Text(title)
                                     .font(.system(size: 22))
                                     .fontWeight(.bold)
-                                    .frame(width: 330, alignment: .topLeading)
+                                    .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .topLeading)
                                     .multilineTextAlignment(.leading)
 
                                 Text(description)
                                     .font(.system(size: 16))
-                                    .frame(width: 330, height: 550, alignment: .topLeading)
+                                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.6, alignment: .topLeading)
                                     .lineLimit(nil)
                                     .overlay(
                                         imageName.map {
@@ -103,7 +103,8 @@ struct RecordPreviewView: View {
                             .cornerRadius(10)
                             .background(Color.white.cornerRadius(10))
                         }
-                        .padding()
+                        .padding(.horizontal)
+                        .frame(height: UIScreen.main.bounds.height * 0.9)
                         .overlay(
                             CustomPopup(
                                 title: "🌱",

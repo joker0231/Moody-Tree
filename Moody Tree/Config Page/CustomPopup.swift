@@ -17,7 +17,7 @@ struct CustomPopup<Content: View>: View {
         ZStack {
             if isPresented.wrappedValue {
                 Color.gray.opacity(0.5)
-                    .edgesIgnoringSafeArea(.all)
+                    .edgesIgnoringSafeArea(.top)
                     .onTapGesture {
                         // 点击灰色部分关闭弹窗
                         isPresented.wrappedValue.toggle()
@@ -29,8 +29,8 @@ struct CustomPopup<Content: View>: View {
                         .padding(.top,20)
                     
                     content
-                        .font(.body)
-                        .padding(.horizontal)
+                    .font(.body)
+                    .padding(.horizontal)
                     
 
                     Button("确定") {
@@ -40,7 +40,7 @@ struct CustomPopup<Content: View>: View {
                     .padding()
                     .cornerRadius(10)
                 }
-                .frame(width: 335)
+                .frame(width: UIScreen.main.bounds.width - 30)
                 .background(Color(red: 246 / 255, green: 251 / 255, blue: 240 / 255))
                 .cornerRadius(20)
             }

@@ -20,8 +20,8 @@ struct FrontPageView: View {
                     .foregroundColor(Color(red: 246/255, green: 251/255, blue: 240/255))
                     .padding(.top, 20)
 
-                Spacer().frame(height: 330)  // Placeholder for ARkit tree model
-
+                Spacer().frame(height: UIScreen.main.bounds.height * 0.4)  // Placeholder for ARkit tree model
+                
                 CardView()
                     .padding(30)
                     .cornerRadius(10)
