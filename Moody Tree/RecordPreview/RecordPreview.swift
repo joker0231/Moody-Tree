@@ -11,11 +11,18 @@ import SwiftUI
 struct RecordPreviewView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @State private var deleteRecord = false
-    var date: String
-    var emotionDescription: String
+    var date: Date
+    var emotionDescription: String?
     var title: String
     var description: String
-    var imageName: String?
+    var images: [Data]?
+    var id: UUID
+    
+    var date1: String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MM/dd"
+        return formatter.string(from: date)
+    }
     
     var body: some View {
         NavigationView {
@@ -48,19 +55,21 @@ struct RecordPreviewView: View {
                         VStack{
                             VStack(alignment: .leading, spacing: 10) {
                                 HStack {
-                                    Text(date)
+                                    Text(date1)
                                         .font(.system(size: 14))
                                         .frame(width: 50, alignment: .topLeading)
 
                                     Spacer()
                                     
-                                    VStack{
-                                        Text(emotionDescription)
-                                            .font(.system(size: 14))
-                                            .padding(2)
+                                    if emotionDescription != nil {
+                                        VStack{
+                                            Text(emotionDescription!)
+                                                .font(.system(size: 14))
+                                                .padding(2)
+                                        }
+                                        .border(Color.black, width: 1)
+                                        .cornerRadius(4)
                                     }
-                                    .border(Color.black, width: 1)
-                                    .cornerRadius(4)
                                     
                                     Spacer()
 
@@ -77,34 +86,40 @@ struct RecordPreviewView: View {
                                 }
                                 .padding(.top,20)
 
-                                Text(title)
-                                    .font(.system(size: 22))
-                                    .fontWeight(.bold)
-                                    .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .topLeading)
-                                    .multilineTextAlignment(.leading)
+                                ScrollView{
+                                    Text(title)
+                                        .font(.system(size: 22))
+                                        .fontWeight(.bold)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .topLeading)
+                                        .multilineTextAlignment(.leading)
 
-                                Text(description)
-                                    .font(.system(size: 16))
-                                    .frame(width: UIScreen.main.bounds.width * 0.8, height: UIScreen.main.bounds.height * 0.6, alignment: .topLeading)
-                                    .lineLimit(nil)
-                                    .overlay(
-                                        imageName.map {
-                                            Image($0)
-                                                .resizable()
-                                                .scaledToFit()
-                                                .frame(width: 300, height: 200)
+                                    Text(description)
+                                        .font(.system(size: 16))
+                                        .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .topLeading)
+                                        .lineLimit(nil)
+                                        .padding(.vertical)
+                                    
+                                    if let images = images {
+                                        VStack {
+                                            ForEach(images, id: \.self) { imageData in
+                                                if let uiImage = UIImage(data: imageData) {
+                                                    Image(uiImage: uiImage)
+                                                        .resizable()
+                                                        .aspectRatio(contentMode: .fit)
+                                                        .frame(width: UIScreen.main.bounds.width * 0.8) // 调整图像的大小
+                                                }
+                                            }
                                         }
-                                    )
-                                    .cornerRadius(5)
-                                
-                                Spacer()
+                                    }
+                                }
+                                .frame(height: UIScreen.main.bounds.height * 0.75)
                             }
                             .padding(20)
                             .cornerRadius(10)
                             .background(Color.white.cornerRadius(10))
                         }
                         .padding(.horizontal)
-                        .frame(height: UIScreen.main.bounds.height * 0.9)
+                        .frame(height: UIScreen.main.bounds.height * 0.85)
                         .overlay(
                             CustomPopup(
                                 title: "🌱",
@@ -121,14 +136,14 @@ struct RecordPreviewView: View {
     }
 }
 
-struct RecordPreviewView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecordPreviewView(
-            date: "12-15",
-            emotionDescription: "Happy",
-            title: "Sample Title",
-            description: "This is a sample description. It can be a long text that users input, and it should support line breaks and scrolling if the content is too long. Also, it may contain an image.",
-            imageName: "sampleImage"
-        )
-    }
-}
+//struct RecordPreviewView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        RecordPreviewView(
+//            date: "12-15",
+//            emotionDescription: "Happy",
+//            title: "Sample Title",
+//            description: "This is a sample description. It can be a long text that users input, and it should support line breaks and scrolling if the content is too long. Also, it may contain an image.",
+//            imageName: "sampleImage"
+//        )
+//    }
+//}

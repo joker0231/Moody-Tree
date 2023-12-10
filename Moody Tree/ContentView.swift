@@ -12,6 +12,7 @@ enum TabItem: Hashable {
 }
 
 struct ContentView: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     @State private var selectedTab: TabItem? = nil
     
     var body: some View {

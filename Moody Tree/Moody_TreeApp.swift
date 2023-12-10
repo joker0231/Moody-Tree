@@ -9,9 +9,20 @@ import SwiftUI
 
 @main
 struct Moody_TreeApp: App {
+    @Environment(\.scenePhase) var scenePhase
+    private let coreDataStack = CoreDataStack(modelName: "Model")
+    
     var body: some Scene {
-        WindowGroup {
+        WindowGroup { 
             ContentView()
+                .environmentObject(coreDataStack)
+                .environment(\.managedObjectContext, coreDataStack.managedObjectContext)
+                .onChange(of: scenePhase) { _ in
+                    coreDataStack.save()
+                }
+                .onAppear(){
+                    addQuetes(to: coreDataStack)
+                }
         }
     }
 }

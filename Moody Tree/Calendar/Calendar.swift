@@ -17,10 +17,15 @@ struct CalendarView: View {
     @State private var todayIndex: Int?
     @State private var position:Int = 0
     @State private var scrollOffset: CGFloat = 0
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(sortDescriptors: [])
+    var moodRecord: FetchedResults<UserMood>
+    @FetchRequest(sortDescriptors: [])
+    var noteRecord: FetchedResults<UserNote>
 
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd"
+        formatter.dateFormat = "MM.dd"
         return formatter
     }()
 
@@ -43,24 +48,36 @@ struct CalendarView: View {
                             HStack {
                                 VStack(alignment: .center) {
                                     Text(date)
-                                        .font(.system(size: 24))
+                                        .font(.system(size: 20))
                                     Text(currentDate.dayOfWeek() ?? "")
                                         .font(.system(size: 16))
                                 }
-                                .frame(width:35)
-                                .padding(30)
+                                .frame(width:55)
+                                .padding(25)
 
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     HStack(spacing: 15) {
-                                        NoteView(style: .style1, text: "Note 1")
-                                        NoteView(style: .style2, text: "Note 2")
-                                        // ... 其他便条
+                                        // 过滤出当前日期对应的 moodRecord 数据
+                                        let filteredMoods = moodRecord.filter { Calendar.current.isDate($0.timestamp!, inSameDayAs: currentDate) }
+                                        ForEach(filteredMoods) { mood in
+                                            // 创建并显示每一条 UserMood 数据的视图
+                                            let imageDatas = mood.images as? [Data] ?? []
+                                            NoteView(style: .mood, title: mood.title!, emotionDescription: mood.mood!, date: mood.timestamp!, description:mood.descriptionText!, images: imageDatas,id: mood.id!)
+                                        }
+                                        let filteredNotes = noteRecord.filter { Calendar.current.isDate($0.timestamp!, inSameDayAs: currentDate) }
+                                        ForEach(filteredNotes) { note in
+                                            // 创建并显示每一条 UserMood 数据的视图
+                                            let imageDatas = note.images as? [Data] ?? []
+                                            NoteView(style: .note, title: note.title!,date: note.timestamp! ,description:note.descriptionText!, images: imageDatas, id: note.id!)
+                                        }
                                     }
                                 }
                             }
                             .id(dayOffset) // 使用 dayOffset 作为唯一标识
                         }
                     }
+                    .frame(width: UIScreen.main.bounds.width)
+                    .padding(.trailing,10)
                     .onAppear {
                         proxy.scrollTo(2, anchor: .center)
                     }

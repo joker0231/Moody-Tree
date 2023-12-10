@@ -13,21 +13,16 @@ struct PlusButton: View {
 
     var body: some View {
         HStack(spacing: 17){
-            HStack(spacing: 17) {
+            HStack(spacing: 30) {
                 NavigationLink(destination: CreatePageView(title: "心情")) {
                     Text("心情")
                 }
                 Divider()
                     .frame(height: 45)
                     .background(Color(red: 123 / 255, green: 139 / 255, blue: 111 / 255))
-                NavigationLink(destination: CreatePageView(title: "日记")) {
-                    Text("日记")
-                }
-                Divider()
-                    .frame(height: 45)
-                    .background(Color(red: 123 / 255, green: 139 / 255, blue: 111 / 255))
-                NavigationLink(destination: CreatePageView(title: "习惯")) {
-                    Text("习惯")
+                
+                NavigationLink(destination: CreatePageView(title: "随笔记")) {
+                    Text("随笔记")
                 }
             }
             .frame(width: 230, height: 55)

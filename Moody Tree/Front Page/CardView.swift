@@ -10,8 +10,15 @@
 // CardView.swift
 
 import SwiftUI
+import CoreData
 
 struct CardView: View {
+    @State private var quote: Quote?
+    @Environment(\.managedObjectContext) var managedObjectContext
+    @FetchRequest(sortDescriptors: [])
+    var quotes: FetchedResults<Quote>
+    let index = Calendar.current.component(.day, from: Date())
+    
     var date: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd / yyyy.MM"
@@ -30,12 +37,18 @@ struct CardView: View {
             }
             Divider()
                 .background(Color(red: 123 / 255, green: 139 / 255, blue: 111 / 255))
-            Text("马特·海格《活下去的理由》")
-                .font(.system(size: 12, weight: .light))
-                .foregroundColor(Color(red: 123 / 255, green: 139 / 255, blue: 111 / 255))
-                .padding(.bottom, 2)
-            Text("你不需要这世界理解你，没关系，有的人永远不会理解他们没经历过的事情，但有些人会理解，要对理解你的人心怀感激。")
-                .font(.system(size: 14))
+            HStack{
+                Text(quote?.author ?? "--")
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundColor(Color(red: 123 / 255, green: 139 / 255, blue: 111 / 255))
+                    .padding(.bottom, 2)
+                Text(quote?.source ?? "--")
+                    .font(.system(size: 14, weight: .light))
+                    .foregroundColor(Color(red: 123 / 255, green: 139 / 255, blue: 111 / 255))
+                    .padding(.bottom, 2)
+            }
+            Text(quote?.content ?? "--")
+                .font(.system(size: 16))
                 .lineSpacing(3)
             HStack {
                 Spacer()
@@ -77,6 +90,18 @@ struct CardView: View {
         .background(Color(red: 246 / 255, green: 251 / 255, blue: 240 / 255))
         .cornerRadius(10)
         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        .onAppear{
+            if quotes.indices.contains(index-1) {
+                quote = quotes[index-1]
+            } else {
+                // 如果数据库中不存在对应的数据，创建默认的 Quote 对象并返回
+                let newQuote = Quote(context: managedObjectContext)
+                newQuote.content = "你不需要这世界理解你，因为有的人永远不会理解他们没经历过的事情，要对有些理解你的人心怀感激。"
+                newQuote.author = "马特·海格"
+                newQuote.source = "《活下去的理由》"
+                quote = newQuote
+            }
+        }
     }
 }
 
@@ -85,4 +110,3 @@ struct CardView_Previews: PreviewProvider {
         CardView()
     }
 }
-

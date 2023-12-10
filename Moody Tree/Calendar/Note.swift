@@ -9,22 +9,22 @@ import Foundation
 import SwiftUI
 
 enum NoteStyle {
-    case style1, style2
+    case mood, note
 
     var topColor: Color {
         switch self {
-        case .style1:
+        case .mood:
             return Color(hex: "FBEAD3")
-        case .style2:
+        case .note:
             return Color(hex: "A9C494")
         }
     }
 
     var bottomColor: Color {
         switch self {
-        case .style1:
+        case .mood:
             return Color(hex: "FDF9EE")
-        case .style2:
+        case .note:
             return Color(hex: "E8ECE7")
         }
     }
@@ -32,15 +32,21 @@ enum NoteStyle {
 
 struct NoteView: View {
     var style: NoteStyle
-    var text: String
+    var title: String
+    var emotionDescription: String?
+    var date: Date
+    var description: String
+    var images: [Data]?
+    var id: UUID
 
     var body: some View {
         NavigationLink(destination: RecordPreviewView(
-            date: "12-15",
-            emotionDescription: "Happy",
-            title: "Sample Title",
-            description: "This is a sample description. It can be a long text that users input, and it should support line breaks and scrolling if the content is too long. Also, it may contain an image.",
-            imageName: "sampleImage"
+            date: date,
+            emotionDescription: emotionDescription,
+            title: title,
+            description: description,
+            images: images,
+            id: id
         )) {
             VStack(spacing: 0) {
                 Rectangle()
@@ -53,7 +59,7 @@ struct NoteView: View {
                     .frame(height: 75)
                     .cornerRadius(10, corners: [.bottomLeft, .bottomRight])
                     .overlay(
-                        Text(text)
+                        Text(title)
                             .font(.system(size: 14))
                             .foregroundColor(.black)
                             .padding(8)
@@ -101,11 +107,11 @@ struct RoundedCorner: Shape {
     }
 }
 
-struct NoteView_Previews: PreviewProvider {
-    static var previews: some View {
-        VStack(spacing: 10) {
-            NoteView(style: .style1, text: "Note 1")
-        }
-        .padding()
-    }
-}
+//struct NoteView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        VStack(spacing: 10) {
+//            NoteView(style: .style1, title: "Note 1")
+//        }
+//        .padding()
+//    }
+//}

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import PhotosUI
+import CoreData
 
 struct DateTimeView: View {
     var body: some View {
@@ -20,23 +21,59 @@ struct DateTimeView: View {
                 .cornerRadius(5)
         }
     }
+}
 
-    func currentDateTime() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM/dd HH:mm"
-        return dateFormatter.string(from: Date())
-    }
+func currentDateTime() -> String {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM/dd HH:mm"
+    return dateFormatter.string(from: Date())
 }
 
 struct CreatePageView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var coreDataStack: CoreDataStack
     @State private var isSheetPresented = false
     @State private var titleText = ""
     @State private var descriptionText = ""
     @State private var selectedMood: String?
     @State private var selectedImages: [UIImage] = []
     @State private var isImagePickerPresented: Bool = false
+    @State private var showAlert = false
+    @State private var errorMessage: String?
     var title: String
+    
+    private var isDisabled: Bool {
+        if titleText.isEmpty || descriptionText.isEmpty {
+            return true
+        }
+
+        if selectedMood == nil && title == "心情" {
+            return true
+        }
+
+        return false
+    }
+
+    
+    private func showSaveAlert() {
+        if isDisabled {
+            if titleText.isEmpty {
+                self.errorMessage = "你忘记标题咯"
+            } else if descriptionText.isEmpty {
+                self.errorMessage = "要不要描述一下细节呢"
+            } else if selectedMood == nil {
+                self.errorMessage = "今天的心情是啥样的呢"
+            }
+            self.showAlert = true
+        } else {
+            self.presentationMode.wrappedValue.dismiss()
+            if title == "心情" {
+                coreDataStack.saveUserMood(title: titleText, descriptionText: descriptionText, mood: selectedMood ?? "暂无", selectedImages: selectedImages)
+            }else {
+                coreDataStack.saveUserNote(title: titleText, descriptionText: descriptionText, selectedImages: selectedImages)
+            }
+        }
+    }
     
     var body: some View {
         NavigationView {
@@ -84,7 +121,7 @@ struct CreatePageView: View {
                                 ScrollView {
                                     TextEditor(text: $descriptionText)
                                         .font(.system(size: 16))
-                                        .frame(width: UIScreen.main.bounds.width * 0.8, height:UIScreen.main.bounds.height * 0.6)
+                                        .frame(width: UIScreen.main.bounds.width * 0.8, height:UIScreen.main.bounds.height * 0.5)
                                         .background(Color.clear)
                                         .multilineTextAlignment(.leading)
                                         .lineSpacing(10)
@@ -106,51 +143,84 @@ struct CreatePageView: View {
 
                                 // 按钮区域
                                 HStack(spacing: 15) {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: UIScreen.main.bounds.width * 0.6, height: 40)
-                                        .foregroundColor(Color(hex: "849B80"))
-                                        .overlay(
-                                            HStack(spacing: 5) {
-                                                ChooseMoodView(selectedMood: $selectedMood)
-                                                
-                                                Spacer()
+                                    if title == "心情" {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: UIScreen.main.bounds.width * 0.6, height: 40)
+                                            .foregroundColor(Color(hex: "849B80"))
+                                            .overlay(
+                                                HStack(spacing: 5) {
+                                                    ChooseMoodView(selectedMood: $selectedMood)
+                                                    
+                                                    Spacer()
+                                                    Button(action: {
+                                                        isImagePickerPresented.toggle()
+                                                    }) {
+                                                        Image(systemName: "photo.fill.on.rectangle.fill")
+                                                            .foregroundColor(Color("414F3F"))
+                                                    }
+                                                    .sheet(isPresented: $isImagePickerPresented) {
+                                                        PhotoPicker(selectedImages: $selectedImages)
+                                                    }
+                                                    .padding(.trailing, 5)
+                                                }
+                                                .padding(.horizontal, 10)
+                                            )
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: UIScreen.main.bounds.width * 0.18, height: 40)
+                                            .foregroundColor(Color(hex: "849B80"))
+                                            .overlay(
+                                                Button("保存") {
+                                                    // 处理保存按钮点击事件
+                                                    showSaveAlert()
+                                                }
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.white)
+                                            )
+                                    } else {
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: UIScreen.main.bounds.width * 0.1, height: 40)
+                                            .foregroundColor(Color(hex: "849B80"))
+                                            .overlay(
                                                 Button(action: {
                                                     isImagePickerPresented.toggle()
                                                 }) {
                                                     Image(systemName: "photo.fill.on.rectangle.fill")
-                                                    .foregroundColor(Color("414F3F"))
+                                                        .foregroundColor(Color("414F3F"))
                                                 }
                                                 .sheet(isPresented: $isImagePickerPresented) {
                                                     PhotoPicker(selectedImages: $selectedImages)
                                                 }
-                                            .padding(.trailing, 5)
-                                            }
-                                            .padding(.horizontal, 10)
-                                        )
-
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .frame(width: UIScreen.main.bounds.width * 0.18, height: 40)
-                                        .foregroundColor(Color(hex: "849B80"))
-                                        .overlay(
-                                            Button("保存") {
-                                                // 处理保存按钮点击事件
-                                            }
-                                            .font(.system(size: 14))
-                                            .foregroundColor(.white)
-                                        )
+                                                .padding(.trailing, 5)
+                                            )
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .frame(width: UIScreen.main.bounds.width * 0.68, height: 40)
+                                            .foregroundColor(Color(hex: "849B80"))
+                                            .overlay(
+                                                Button("保存") {
+                                                    // 处理保存按钮点击事件
+                                                    showSaveAlert()
+                                                }
+                                                .font(.system(size: 14))
+                                                .foregroundColor(.white)
+                                            )
+                                    }
                                 }
+
                             }
                             .padding(20)
                             .cornerRadius(10)
                             .background(Color.white.cornerRadius(10))
                         }
                         .padding(.horizontal)
-                        .frame(height: UIScreen.main.bounds.height * 0.9)
+                        .frame(height: UIScreen.main.bounds.height * 0.85)
                     }
                 }
             }
         }
             .navigationBarHidden(true)
+            .alert(isPresented: $showAlert) {
+                Alert(title: Text("🔔"), message: Text(errorMessage ?? "可不能什么都不填哦").font(.system(size: 16)), dismissButton: .default(Text("知道啦")))
+            }
     }
 }
 
