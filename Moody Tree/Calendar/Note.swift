@@ -46,7 +46,8 @@ struct NoteView: View {
             title: title,
             description: description,
             images: images,
-            id: id
+            id: id,
+            style: style
         )) {
             VStack(spacing: 0) {
                 Rectangle()

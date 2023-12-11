@@ -7,9 +7,11 @@
 
 import Foundation
 import SwiftUI
+import CoreData
 
 struct RecordPreviewView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.managedObjectContext) var managedObjectContext
     @State private var deleteRecord = false
     var date: Date
     var emotionDescription: String?
@@ -17,11 +19,36 @@ struct RecordPreviewView: View {
     var description: String
     var images: [Data]?
     var id: UUID
+    var style: NoteStyle
     
     var date1: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd"
         return formatter.string(from: date)
+    }
+    
+    func deleteRecordWithID(id: UUID, entityName: String) {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+
+        do {
+            let fetchedResults = try managedObjectContext.fetch(fetchRequest) as? [NSManagedObject]
+
+            if let recordToDelete = fetchedResults?.first {
+                managedObjectContext.delete(recordToDelete)
+
+                do {
+                    try managedObjectContext.save()
+                    print("Record deleted successfully.")
+                } catch {
+                    print("Error saving context after deleting record: \(error)")
+                }
+            } else {
+                print("Record with ID \(id) not found.")
+            }
+        } catch {
+            print("Error fetching record for deletion: \(error)")
+        }
     }
     
     var body: some View {
@@ -124,7 +151,14 @@ struct RecordPreviewView: View {
                             CustomPopup(
                                 title: "🌱",
                                 content: Text("确定要删除这条记录吗？"),
-                                isPresented: $deleteRecord
+                                isPresented: $deleteRecord,
+                                onConfirm: {
+                                    if style == .mood {
+                                        deleteRecordWithID(id: id,entityName: "UserMood")
+                                    }else if style == .note {
+                                        deleteRecordWithID(id: id,entityName: "UserNote")
+                                    }
+                                }
                             )
                             .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
                         )
