@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F30107102B28C0F700F11C4A /* UserDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F301070F2B28C0F700F11C4A /* UserDateManager.swift */; };
 		F322A2E72B1F0C33009EAEAB /* Moody_TreeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A2E62B1F0C33009EAEAB /* Moody_TreeApp.swift */; };
 		F322A2E92B1F0C33009EAEAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A2E82B1F0C33009EAEAB /* ContentView.swift */; };
 		F322A2EB2B1F0C34009EAEAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F322A2EA2B1F0C34009EAEAB /* Assets.xcassets */; };
@@ -35,7 +36,7 @@
 		F3A2015E2B2374350083C06C /* ChooseMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2015D2B2374350083C06C /* ChooseMood.swift */; };
 		F3A2016C2B24B0DC0083C06C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F3A2016A2B24B0DC0083C06C /* Model.xcdatamodeld */; };
 		F3A201AA2B24B9600083C06C /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A201A92B24B9600083C06C /* CoreDataStack.swift */; };
-		F3A201AC2B24C80D0083C06C /* DataBaseOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A201AB2B24C80D0083C06C /* DataBaseOperation.swift */; };
+		F3A201AC2B24C80D0083C06C /* DataOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A201AB2B24C80D0083C06C /* DataOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F301070F2B28C0F700F11C4A /* UserDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDateManager.swift; sourceTree = "<group>"; };
 		F322A2E32B1F0C33009EAEAB /* Moody Tree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moody Tree.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F322A2E62B1F0C33009EAEAB /* Moody_TreeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moody_TreeApp.swift; sourceTree = "<group>"; };
 		F322A2E82B1F0C33009EAEAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -101,7 +103,7 @@
 		F3A2015D2B2374350083C06C /* ChooseMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMood.swift; sourceTree = "<group>"; };
 		F3A2016B2B24B0DC0083C06C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		F3A201A92B24B9600083C06C /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		F3A201AB2B24C80D0083C06C /* DataBaseOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseOperation.swift; sourceTree = "<group>"; };
+		F3A201AB2B24C80D0083C06C /* DataOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +172,9 @@
 				F322A2ED2B1F0C34009EAEAB /* Preview Content */,
 				F3A2016A2B24B0DC0083C06C /* Model.xcdatamodeld */,
 				F3A201A92B24B9600083C06C /* CoreDataStack.swift */,
-				F3A201AB2B24C80D0083C06C /* DataBaseOperation.swift */,
+				F3A201AB2B24C80D0083C06C /* DataOperation.swift */,
 				F392CCC72B25F2E400793276 /* test.swift */,
+				F301070F2B28C0F700F11C4A /* UserDateManager.swift */,
 			);
 			path = "Moody Tree";
 			sourceTree = "<group>";
@@ -432,7 +435,7 @@
 				F322A31F2B1F4C6E009EAEAB /* PersonalPage.swift in Sources */,
 				F322A3142B1F1F8C009EAEAB /* FrontPage.swift in Sources */,
 				F3A2014F2B20D9040083C06C /* CustomPopup.swift in Sources */,
-				F3A201AC2B24C80D0083C06C /* DataBaseOperation.swift in Sources */,
+				F3A201AC2B24C80D0083C06C /* DataOperation.swift in Sources */,
 				F392CCC82B25F2E400793276 /* test.swift in Sources */,
 				F3A2015A2B2241C70083C06C /* RecordPreview.swift in Sources */,
 				F3A201522B2218020083C06C /* Calendar.swift in Sources */,
@@ -442,6 +445,7 @@
 				F3A201402B205AF00083C06C /* LineChart.swift in Sources */,
 				F3A201422B2060860083C06C /* PieChart.swift in Sources */,
 				F3A2013D2B2058770083C06C /* AnnualStatisticsPage.swift in Sources */,
+				F30107102B28C0F700F11C4A /* UserDateManager.swift in Sources */,
 				F3A2015E2B2374350083C06C /* ChooseMood.swift in Sources */,
 				F322A3122B1F1D81009EAEAB /* CardView.swift in Sources */,
 				F3A201542B223A860083C06C /* Note.swift in Sources */,

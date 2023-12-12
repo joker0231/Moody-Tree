@@ -34,6 +34,7 @@ struct ConfigPageView: View {
     @State private var isAboutAlertPresented = false
     @State private var isPhotoAlertPresented = false
     @State private var newNickname: String = ""
+    @State private var nickname: String = "小树"
     
     var body: some View {
         NavigationView {
@@ -67,7 +68,7 @@ struct ConfigPageView: View {
                         
                         VStack{
                             VStack(alignment: .leading, spacing: 20) {
-                                SettingsItem(title: "昵称", description: "昵称"){
+                                SettingsItem(title: "昵称", description: nickname){
                                     // 点击昵称的操作
                                     isNicknameAlertPresented.toggle()
                                 }
@@ -96,7 +97,11 @@ struct ConfigPageView: View {
                                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                                 .padding()
                                         ,
-                                        isPresented: $isNicknameAlertPresented
+                                        isPresented: $isNicknameAlertPresented,
+                                        onConfirm: {
+                                            UserDataManager.shared.updateNickname(newNickname)
+                                        },
+                                        buttonText: "取好啦"
                                     )
                                     .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
                                 )
@@ -104,7 +109,8 @@ struct ConfigPageView: View {
                                     CustomPopup(
                                         title: "反馈",
                                         content: Text("如果有任何问题，请发送邮件到xxxxx@qq.com，开发者会马不停蹄的处理掉一切BUG！"),
-                                        isPresented: $isFeedbackAlertPresented
+                                        isPresented: $isFeedbackAlertPresented,
+                                        buttonText: "了解啦"
                                     )
                                     .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
                                 )
@@ -126,12 +132,16 @@ struct ConfigPageView: View {
                                                 Text("👆您可以发送邮件到xxxxxx@qq.com向我发送反馈噢。")
                                             }
                                                 .multilineTextAlignment(.leading),
-                                        isPresented: $isAboutAlertPresented
+                                        isPresented: $isAboutAlertPresented,
+                                        buttonText: "了解啦"
                                     )
                                     .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
                                 )
                         }
                         .padding(.horizontal, 10)
+                        .onAppear{
+                            nickname = UserDataManager.shared.getNickname()
+                        }
                     }
                 }
             }

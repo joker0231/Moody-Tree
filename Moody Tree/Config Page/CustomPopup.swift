@@ -13,6 +13,7 @@ struct CustomPopup<Content: View>: View {
     var content: Content
     var isPresented: Binding<Bool>
     var onConfirm: (() -> Void)?
+    var buttonText: String
 
     var body: some View {
         ZStack {
@@ -34,7 +35,7 @@ struct CustomPopup<Content: View>: View {
                     .padding(.horizontal)
                     
 
-                    Button("确定") {
+                    Button(buttonText) {
                         // 处理确定按钮点击逻辑
                         onConfirm?() 
                         isPresented.wrappedValue.toggle()

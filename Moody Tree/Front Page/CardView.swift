@@ -14,6 +14,7 @@ import CoreData
 
 struct CardView: View {
     @State private var quote: Quote?
+    @State private var dailyData: (moodRecordCount: Int, todayMood: String) = (0, "暂无")
     @Environment(\.managedObjectContext) var managedObjectContext
     @FetchRequest(sortDescriptors: [])
     var quotes: FetchedResults<Quote>
@@ -54,7 +55,7 @@ struct CardView: View {
                 Spacer()
                 
                 VStack {
-                    Text("0")
+                    Text("\(dailyData.moodRecordCount)")
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(.black)
                         .padding(.bottom, 1)
@@ -70,7 +71,7 @@ struct CardView: View {
                     .background(Color("7B8B6F"))
 
                 VStack {
-                    Text("开心")
+                    Text(dailyData.todayMood)
                         .font(.system(size: 20, weight: .bold, design: .default))
                         .foregroundColor(.black)
                         .padding(.bottom, 1)
@@ -101,6 +102,8 @@ struct CardView: View {
                 newQuote.source = "《活下去的理由》"
                 quote = newQuote
             }
+            UserDataManager.shared.resetDailyData()
+            dailyData = UserDataManager.shared.getDailyData()
         }
     }
 }

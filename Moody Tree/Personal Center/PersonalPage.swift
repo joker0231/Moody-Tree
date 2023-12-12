@@ -14,14 +14,17 @@ struct MoodSumData: Identifiable {
 }
 
 struct ProfileView: View {
-    let moodDataArray = [
-        MoodSumData(mood: "Happy", count: 25),
-        MoodSumData(mood: "Sad", count: 15),
-        MoodSumData(mood: "Excited", count: 30),
-        MoodSumData(mood: "Calm", count: 25),
-        MoodSumData(mood: "Angry", count: 15),
-        MoodSumData(mood: "Surprised", count: 30),
-        MoodSumData(mood: "Bored", count: 30),
+    @State private var monthlyData: [String: Int] = ["totalCount": 0,"negativeEmotionCount": 0, "positiveEmotionCount": 0, "happyCount": 0, "excitedCount": 0, "fightingCount": 0, "sadCount": 0, "speechlessCount": 0, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]
+    @State private var nickname: String = "小树"
+    @State private var moodDataArray: [MoodSumData] = [
+        MoodSumData(mood: "棒极了", count: 0),
+        MoodSumData(mood: "美滋滋", count: 0),
+        MoodSumData(mood: "冲冲冲", count: 0),
+        MoodSumData(mood: "好难过", count: 0),
+        MoodSumData(mood: "无语", count: 0),
+        MoodSumData(mood: "生气", count: 0),
+        MoodSumData(mood: "累死了", count: 0),
+        MoodSumData(mood: "焦虑", count: 0),
     ]
     
     var body: some View {
@@ -38,26 +41,26 @@ struct ProfileView: View {
                         .overlay(Circle().stroke(Color.white, lineWidth: 2))
                         .padding(.top, 35)
 
-                    Text("昵称")
+                    Text(nickname)
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(Color(red: 247/255, green: 251/255, blue: 246/255))
                         .padding(.top, 10)
 
                     // 数据统计部分
                     HStack {
-                        SumBlock(data: "XX", detail: "天小树健康成长", color: Color("7B8B6F"))
+                        SumBlock(data: monthlyData["positiveEmotionCount"] ?? 0, detail: "次小树健康成长", color: Color("7B8B6F"))
                         Divider().frame(height: 60).background(Color("7B8B6F"))
-                        SumBlock(data: "XX", detail: "天小树遭受磨难", color: Color("7B8B6F"))
+                        SumBlock(data: monthlyData["negativeEmotionCount"] ?? 0, detail: "次小树遭受磨难", color: Color("7B8B6F"))
                         Divider().frame(height: 60).background(Color("7B8B6F"))
-                        SumBlock(data: "XX", detail: "天的辛勤灌溉", color: Color("7B8B6F"))
+                        SumBlock(data: monthlyData["totalCount"] ?? 0, detail: "天的辛勤灌溉", color: Color("7B8B6F"))
                     }
                     .padding(18)
                     .background(Color(red: 247/255, green: 251/255, blue: 246/255))
                     .cornerRadius(10)
 
                     // 月度情绪统计
-                    DataBlock(title: "月度情绪统计", detail: "截止到今日，本月你感受到最多的情绪为XX", color: Color("7B8B6F")){
-                        BarMarkChartView(data:moodDataArray)
+                    DataBlock(title: "月度情绪统计", detail: "截止到今日，本月你的情绪统计如下：", color: Color("7B8B6F")){
+                        BarMarkChartView(data: moodDataArray)
                     }
                         .background(Color(red: 247/255, green: 251/255, blue: 246/255))
                         .cornerRadius(10)
@@ -82,17 +85,23 @@ struct ProfileView: View {
                     Spacer().frame(height: 30)
                 }
             }
+            .onAppear{
+                monthlyData = UserDataManager.shared.getMonthlyData()
+                nickname = UserDataManager.shared.getNickname()
+                moodDataArray = UserDataManager.shared.createMoodDataArray()
+                UserDataManager.shared.resetMonthlyData()
+            }
         }
 }
 
 struct SumBlock: View {
-    var data: String
+    var data: Int
     var detail: String
     var color: Color
 
     var body: some View {
             VStack(spacing: 5) {
-                Text(data)
+                Text("\(data)")
                     .font(.system(size: 24,weight: .bold))
                     .foregroundColor(color)
                     .lineLimit(1)

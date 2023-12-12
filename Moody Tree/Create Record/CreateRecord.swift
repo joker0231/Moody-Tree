@@ -67,8 +67,13 @@ struct CreatePageView: View {
             self.showAlert = true
         } else {
             self.presentationMode.wrappedValue.dismiss()
+            let preMoodRecordCount = UserDefaults.standard.integer(forKey: "moodRecordCount")
+            UserDataManager.shared.updatemoodRecordCount(moodRecordCount: preMoodRecordCount+1)
+            UserDataManager.shared.updateCheckInStatus()
             if title == "心情" {
                 coreDataStack.saveUserMood(title: titleText, descriptionText: descriptionText, mood: selectedMood ?? "暂无", selectedImages: selectedImages)
+                UserDataManager.shared.updatetodayMood(todayMood: selectedMood ?? "暂无")
+                UserDataManager.shared.updateEmotionCounts(selectedMood: selectedMood)
             }else {
                 coreDataStack.saveUserNote(title: titleText, descriptionText: descriptionText, selectedImages: selectedImages)
             }

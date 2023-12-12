@@ -153,12 +153,15 @@ struct RecordPreviewView: View {
                                 content: Text("确定要删除这条记录吗？"),
                                 isPresented: $deleteRecord,
                                 onConfirm: {
+                                    let preMoodRecordCount = UserDefaults.standard.integer(forKey: "moodRecordCount")
+                                    UserDataManager.shared.updatemoodRecordCount(moodRecordCount: preMoodRecordCount-1)
                                     if style == .mood {
                                         deleteRecordWithID(id: id,entityName: "UserMood")
                                     }else if style == .note {
                                         deleteRecordWithID(id: id,entityName: "UserNote")
                                     }
-                                }
+                                },
+                                buttonText: "确定"
                             )
                             .frame(width: UIScreen.main.bounds.width,height: UIScreen.main.bounds.height)
                         )
