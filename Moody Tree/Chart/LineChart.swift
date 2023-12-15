@@ -11,15 +11,14 @@ import Charts
 
 struct LineMarkData: Identifiable {
     var mood: String
-    var date: Date
+    var date: Int
     var count: Int
     var id: UUID = UUID()
 
 
     init(mood: String, month: Int, count: Int) {
-        let calendar = Calendar.autoupdatingCurrent
         self.mood = mood
-        self.date = calendar.date(from: DateComponents(year: 2020, month: month))!
+        self.date = month
         self.count = count
     }
 }

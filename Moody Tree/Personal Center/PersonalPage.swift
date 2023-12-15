@@ -69,7 +69,7 @@ struct ProfileView: View {
                     
 
                     // 小树想帮你
-                    DataBlock(title: "小树想帮你", detail: "这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议leading", color: Color("7B8B6F")){
+                    DataBlock(title: "小树想帮你", detail: UserDataManager.shared.findMaxMoodAdvice(), color: Color("7B8B6F")){
                         EmptyView()
                     }
                         .background(Color(red: 247/255, green: 251/255, blue: 246/255))

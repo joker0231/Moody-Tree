@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		F30107102B28C0F700F11C4A /* UserDateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F301070F2B28C0F700F11C4A /* UserDateManager.swift */; };
+		F30107752B2A175500F11C4A /* MoodyTree_watchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30107742B2A175500F11C4A /* MoodyTree_watchApp.swift */; };
+		F30107772B2A175500F11C4A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30107762B2A175500F11C4A /* ContentView.swift */; };
+		F30107792B2A175700F11C4A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F30107782B2A175700F11C4A /* Assets.xcassets */; };
+		F301077C2B2A175700F11C4A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F301077B2B2A175700F11C4A /* Preview Assets.xcassets */; };
+		F301077F2B2A175700F11C4A /* MoodyTree watch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = F30107722B2A175500F11C4A /* MoodyTree watch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F30107852B2A180500F11C4A /* ChooseMood.swift in Sources */ = {isa = PBXBuildFile; fileRef = F30107842B2A180500F11C4A /* ChooseMood.swift */; };
 		F322A2E72B1F0C33009EAEAB /* Moody_TreeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A2E62B1F0C33009EAEAB /* Moody_TreeApp.swift */; };
 		F322A2E92B1F0C33009EAEAB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A2E82B1F0C33009EAEAB /* ContentView.swift */; };
 		F322A2EB2B1F0C34009EAEAB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F322A2EA2B1F0C34009EAEAB /* Assets.xcassets */; };
@@ -21,6 +27,8 @@
 		F322A31F2B1F4C6E009EAEAB /* PersonalPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A31E2B1F4C6E009EAEAB /* PersonalPage.swift */; };
 		F322A3212B1F57C8009EAEAB /* DataBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A3202B1F57C8009EAEAB /* DataBlock.swift */; };
 		F322A3232B1F5ACA009EAEAB /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A3222B1F5ACA009EAEAB /* BarChart.swift */; };
+		F32700D92B2A378600AB7D8D /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32700D82B2A378600AB7D8D /* Connectivity.swift */; };
+		F32700DA2B2A378600AB7D8D /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32700D82B2A378600AB7D8D /* Connectivity.swift */; };
 		F392CCC82B25F2E400793276 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392CCC72B25F2E400793276 /* test.swift */; };
 		F3A2013D2B2058770083C06C /* AnnualStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */; };
 		F3A201402B205AF00083C06C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013F2B205AF00083C06C /* LineChart.swift */; };
@@ -40,6 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F301077D2B2A175700F11C4A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F322A2DB2B1F0C33009EAEAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F30107712B2A175500F11C4A;
+			remoteInfo = "MoodyTree watch Watch App";
+		};
 		F322A2F52B1F0C34009EAEAB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F322A2DB2B1F0C33009EAEAB /* Project object */;
@@ -57,6 +72,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F30107832B2A175700F11C4A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				F301077F2B2A175700F11C4A /* MoodyTree watch Watch App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F3A201302B1F87C40083C06C /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -71,6 +97,13 @@
 
 /* Begin PBXFileReference section */
 		F301070F2B28C0F700F11C4A /* UserDateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDateManager.swift; sourceTree = "<group>"; };
+		F30107112B29963C00F11C4A /* Moody-Tree-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Moody-Tree-Info.plist"; sourceTree = SOURCE_ROOT; };
+		F30107722B2A175500F11C4A /* MoodyTree watch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MoodyTree watch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F30107742B2A175500F11C4A /* MoodyTree_watchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodyTree_watchApp.swift; sourceTree = "<group>"; };
+		F30107762B2A175500F11C4A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F30107782B2A175700F11C4A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F301077B2B2A175700F11C4A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F30107842B2A180500F11C4A /* ChooseMood.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseMood.swift; sourceTree = "<group>"; };
 		F322A2E32B1F0C33009EAEAB /* Moody Tree.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moody Tree.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F322A2E62B1F0C33009EAEAB /* Moody_TreeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Moody_TreeApp.swift; sourceTree = "<group>"; };
 		F322A2E82B1F0C33009EAEAB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -88,6 +121,7 @@
 		F322A31E2B1F4C6E009EAEAB /* PersonalPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalPage.swift; sourceTree = "<group>"; };
 		F322A3202B1F57C8009EAEAB /* DataBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBlock.swift; sourceTree = "<group>"; };
 		F322A3222B1F5ACA009EAEAB /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
+		F32700D82B2A378600AB7D8D /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		F392CCC72B25F2E400793276 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		F3A2012A2B1F858C0083C06C /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/Charts.framework; sourceTree = DEVELOPER_DIR; };
 		F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualStatisticsPage.swift; sourceTree = "<group>"; };
@@ -107,6 +141,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F301076F2B2A175500F11C4A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F322A2E02B1F0C33009EAEAB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -132,12 +173,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F30107732B2A175500F11C4A /* MoodyTree watch Watch App */ = {
+			isa = PBXGroup;
+			children = (
+				F30107742B2A175500F11C4A /* MoodyTree_watchApp.swift */,
+				F30107842B2A180500F11C4A /* ChooseMood.swift */,
+				F30107762B2A175500F11C4A /* ContentView.swift */,
+				F30107782B2A175700F11C4A /* Assets.xcassets */,
+				F301077A2B2A175700F11C4A /* Preview Content */,
+			);
+			path = "MoodyTree watch Watch App";
+			sourceTree = "<group>";
+		};
+		F301077A2B2A175700F11C4A /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F301077B2B2A175700F11C4A /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		F322A2DA2B1F0C33009EAEAB = {
 			isa = PBXGroup;
 			children = (
+				F32700D72B2A376500AB7D8D /* share */,
 				F322A2E52B1F0C33009EAEAB /* Moody Tree */,
 				F322A2F72B1F0C34009EAEAB /* Moody TreeTests */,
 				F322A3012B1F0C34009EAEAB /* Moody TreeUITests */,
+				F30107732B2A175500F11C4A /* MoodyTree watch Watch App */,
 				F322A2E42B1F0C33009EAEAB /* Products */,
 				F3A201292B1F858C0083C06C /* Frameworks */,
 			);
@@ -149,6 +212,7 @@
 				F322A2E32B1F0C33009EAEAB /* Moody Tree.app */,
 				F322A2F42B1F0C34009EAEAB /* Moody TreeTests.xctest */,
 				F322A2FE2B1F0C34009EAEAB /* Moody TreeUITests.xctest */,
+				F30107722B2A175500F11C4A /* MoodyTree watch Watch App.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -156,6 +220,7 @@
 		F322A2E52B1F0C33009EAEAB /* Moody Tree */ = {
 			isa = PBXGroup;
 			children = (
+				F30107112B29963C00F11C4A /* Moody-Tree-Info.plist */,
 				F3A201692B2456D50083C06C /* Front Page */,
 				F3A201682B2456B70083C06C /* Personal Center */,
 				F3A201672B2456910083C06C /* Chart */,
@@ -202,6 +267,14 @@
 				F322A3042B1F0C34009EAEAB /* Moody_TreeUITestsLaunchTests.swift */,
 			);
 			path = "Moody TreeUITests";
+			sourceTree = "<group>";
+		};
+		F32700D72B2A376500AB7D8D /* share */ = {
+			isa = PBXGroup;
+			children = (
+				F32700D82B2A378600AB7D8D /* Connectivity.swift */,
+			);
+			path = share;
 			sourceTree = "<group>";
 		};
 		F3A201292B1F858C0083C06C /* Frameworks */ = {
@@ -295,6 +368,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F30107712B2A175500F11C4A /* MoodyTree watch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F30107802B2A175700F11C4A /* Build configuration list for PBXNativeTarget "MoodyTree watch Watch App" */;
+			buildPhases = (
+				F301076E2B2A175500F11C4A /* Sources */,
+				F301076F2B2A175500F11C4A /* Frameworks */,
+				F30107702B2A175500F11C4A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MoodyTree watch Watch App";
+			productName = "MoodyTree watch Watch App";
+			productReference = F30107722B2A175500F11C4A /* MoodyTree watch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
 		F322A2E22B1F0C33009EAEAB /* Moody Tree */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F322A3082B1F0C34009EAEAB /* Build configuration list for PBXNativeTarget "Moody Tree" */;
@@ -303,10 +393,12 @@
 				F322A2E02B1F0C33009EAEAB /* Frameworks */,
 				F322A2E12B1F0C33009EAEAB /* Resources */,
 				F3A201302B1F87C40083C06C /* Embed Frameworks */,
+				F30107832B2A175700F11C4A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F301077E2B2A175700F11C4A /* PBXTargetDependency */,
 			);
 			name = "Moody Tree";
 			packageProductDependencies = (
@@ -362,6 +454,9 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					F30107712B2A175500F11C4A = {
+						CreatedOnToolsVersion = 14.3;
+					};
 					F322A2E22B1F0C33009EAEAB = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -394,11 +489,21 @@
 				F322A2E22B1F0C33009EAEAB /* Moody Tree */,
 				F322A2F32B1F0C34009EAEAB /* Moody TreeTests */,
 				F322A2FD2B1F0C34009EAEAB /* Moody TreeUITests */,
+				F30107712B2A175500F11C4A /* MoodyTree watch Watch App */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F30107702B2A175500F11C4A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F301077C2B2A175700F11C4A /* Preview Assets.xcassets in Resources */,
+				F30107792B2A175700F11C4A /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F322A2E12B1F0C33009EAEAB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,12 +530,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F301076E2B2A175500F11C4A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F32700DA2B2A378600AB7D8D /* Connectivity.swift in Sources */,
+				F30107772B2A175500F11C4A /* ContentView.swift in Sources */,
+				F30107852B2A180500F11C4A /* ChooseMood.swift in Sources */,
+				F30107752B2A175500F11C4A /* MoodyTree_watchApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F322A2DF2B1F0C33009EAEAB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F3A201AA2B24B9600083C06C /* CoreDataStack.swift in Sources */,
 				F3A201572B223FF80083C06C /* CreateRecord.swift in Sources */,
+				F32700D92B2A378600AB7D8D /* Connectivity.swift in Sources */,
 				F322A3232B1F5ACA009EAEAB /* BarChart.swift in Sources */,
 				F322A31F2B1F4C6E009EAEAB /* PersonalPage.swift in Sources */,
 				F322A3142B1F1F8C009EAEAB /* FrontPage.swift in Sources */,
@@ -476,6 +593,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F301077E2B2A175700F11C4A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F30107712B2A175500F11C4A /* MoodyTree watch Watch App */;
+			targetProxy = F301077D2B2A175700F11C4A /* PBXContainerItemProxy */;
+		};
 		F322A2F62B1F0C34009EAEAB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F322A2E22B1F0C33009EAEAB /* Moody Tree */;
@@ -489,6 +611,67 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F30107812B2A175700F11C4A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoodyTree watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = QBRVU456MK;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MoodyTree watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.jokerhubs.Moody-Tree";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jokerhubs.Moody-Tree.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Debug;
+		};
+		F30107822B2A175700F11C4A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"MoodyTree watch Watch App/Preview Content\"";
+				DEVELOPMENT_TEAM = QBRVU456MK;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "MoodyTree watch";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.jokerhubs.Moody-Tree";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.jokerhubs.Moody-Tree.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 9.4;
+			};
+			name = Release;
+		};
 		F322A3062B1F0C34009EAEAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -601,14 +784,17 @@
 		F322A3092B1F0C34009EAEAB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Moody Tree/Moody_Tree.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moody Tree/Preview Content\"";
+				DEVELOPMENT_TEAM = QBRVU456MK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Moody-Tree-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -637,14 +823,17 @@
 		F322A30A2B1F0C34009EAEAB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = "Moody Tree/Moody_Tree.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Moody Tree/Preview Content\"";
+				DEVELOPMENT_TEAM = QBRVU456MK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Moody-Tree-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -759,6 +948,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F30107802B2A175700F11C4A /* Build configuration list for PBXNativeTarget "MoodyTree watch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F30107812B2A175700F11C4A /* Debug */,
+				F30107822B2A175700F11C4A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F322A2DE2B1F0C33009EAEAB /* Build configuration list for PBXProject "Moody Tree" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

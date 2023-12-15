@@ -10,6 +10,30 @@ import DGCharts
 import UIKit
 
 class PieViewController: UIViewController {
+    let anidata = UserDataManager.shared.getAnilyData()
+    
+    func calculateEmotionSum() -> [PieChartDataEntry] {
+        var emotionSums: [String: Int] = [:]
+        let anidata = UserDataManager.shared.getAnilyData()
+
+        // 遍历anidata的每个item
+        for dataEntry in anidata {
+            for (_, emotionData) in dataEntry {
+                // 遍历每个属性的值，除了negativeEmotionCount和positiveEmotionCount
+                for (emotion, count) in emotionData where emotion != "negativeEmotionCount" && emotion != "positiveEmotionCount" {
+                    // 将属性值累加到总和中
+                    emotionSums[emotion, default: 0] += count
+                }
+            }
+        }
+
+        // 将总和转换成PieChartDataEntry数组
+        let pieChartDataEntries: [PieChartDataEntry] = emotionSums.map {
+            PieChartDataEntry(value: Double($0.value), label: $0.key)
+        }
+
+        return pieChartDataEntries
+    }
      
     //饼状图
     var chartView: PieChartView!
@@ -19,15 +43,10 @@ class PieViewController: UIViewController {
          
         //创建饼图组件对象
         chartView = PieChartView()
-        chartView.frame = CGRect(x: 20, y: 0, width: 285,height: 260)
+        chartView.frame = CGRect(x: 10, y: 0, width: 305,height: 270)
         self.view.addSubview(chartView)
          
-        //生成5条随机数据
-        let dataEntries = (0..<5).map { (i) -> PieChartDataEntry in
-            return PieChartDataEntry(value: Double(arc4random_uniform(50) + 10),
-                                     label: "数据\(i)")
-        }
-        let chartDataSet = PieChartDataSet(entries: dataEntries, label: "")
+        let chartDataSet = PieChartDataSet(entries: calculateEmotionSum(), label: "")
         //设置颜色
         chartDataSet.colors = ChartColorTemplates.liberty()
         let chartData = PieChartData(dataSet: chartDataSet)

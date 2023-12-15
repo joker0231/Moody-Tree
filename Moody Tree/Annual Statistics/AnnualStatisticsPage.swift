@@ -22,21 +22,7 @@ struct AnnualStatisticsView: View {
     ]
     
     
-    var LineChartdata: [LineMarkData] = [
-        LineMarkData(mood: "Happy", month: 1, count: 12),
-        LineMarkData(mood: "Sad", month: 1, count: 8),
-        LineMarkData(mood: "Angry", month: 1, count: 8),
-        LineMarkData(mood: "Confused", month: 1, count: 1),
-        // ...
-        LineMarkData(mood: "Happy", month: 6, count: 8),
-        LineMarkData(mood: "Sad", month: 6, count: 9),
-        LineMarkData(mood: "Angry", month: 6, count: 18),
-        LineMarkData(mood: "Confused", month: 6, count: 5),
-        LineMarkData(mood: "Happy", month: 12, count: 4),
-        LineMarkData(mood: "Sad", month: 12, count: 19),
-        LineMarkData(mood: "Angry", month: 12, count: 0),
-        LineMarkData(mood: "Confused", month: 12, count: 2),
-    ]
+    @State private var LineChartdata: [LineMarkData] = []
     
     var body: some View {
         NavigationView{
@@ -69,7 +55,7 @@ struct AnnualStatisticsView: View {
                     
                     ScrollView {
                         // 月度情绪统计
-                        DataBlock(title: "月度情绪统计", detail: "这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议leading", color: Color("7B8B6F")){
+                        DataBlock(title: "正面情绪VS负面情绪", detail: UserDataManager.shared.analyzeEmotionData(), color: Color("7B8B6F")){
                             LineMarkChartView(data: LineChartdata)
                         }
                             .background(Color(red: 247/255, green: 251/255, blue: 246/255))
@@ -78,7 +64,7 @@ struct AnnualStatisticsView: View {
                             .shadow(radius: 5)
                         
                         // 月度情绪统计
-                        DataBlock(title: "月度情绪统计", detail: "这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议leading", color: Color("7B8B6F")){
+                        DataBlock(title: "年度各项情绪统计", detail: UserDataManager.shared.analyzeEmotions(), color: Color("7B8B6F")){
                             PieChartViewController()
                                 .edgesIgnoringSafeArea(.all)
                                 .frame(width: 275,height: 260)
@@ -89,7 +75,7 @@ struct AnnualStatisticsView: View {
                             .shadow(radius: 5)
                         
                         // 月度情绪统计
-                        DataBlock(title: "月度情绪统计", detail: "这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议这里是小树的一些建议leading", color: Color("7B8B6F")){
+                        DataBlock(title: "年度情绪关键词", detail: UserDataManager.shared.analyzeKeyWord(), color: Color("7B8B6F")){
                             RadarChartViewController()
                                 .edgesIgnoringSafeArea(.all)
                                 .frame(width: 275,height: 240)
@@ -103,6 +89,9 @@ struct AnnualStatisticsView: View {
             }
         }
             .navigationBarHidden(true)
+            .onAppear{
+                LineChartdata = UserDataManager.shared.createLineDataArray()
+            }
     }
 }
 

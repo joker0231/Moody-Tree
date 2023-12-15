@@ -39,6 +39,7 @@ struct BottomSheetView: View {
     @Binding var isSheetPresented: Bool
     @Binding var selectedMood: String?
     @Environment(\.presentationMode) var presentationMode
+    let moodOptions = ["棒极了", "美滋滋", "无语", "生气", "焦虑", "冲冲冲", "好难过", "累死了"]
 
     var body: some View {
         VStack {
@@ -89,6 +90,5 @@ struct BottomSheetView: View {
         .cornerRadius(10)
     }
 
-    let moodOptions = ["棒极了", "美滋滋", "无语", "生气", "焦虑", "冲冲冲", "好难过", "累死了"]
 
 }
