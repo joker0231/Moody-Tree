@@ -14,7 +14,7 @@ enum TabItem: Hashable {
 struct ContentView: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var selectedTab: TabItem? = nil
-    
+
     var body: some View {
         NavigationView{
             TabView() {
@@ -25,7 +25,7 @@ struct ContentView: View {
                         Image(systemName: "leaf.fill")
                     }
                     .tag(TabItem.tab1)
-                
+
                 // 日历页面
                 CalendarView()
                     .frame(height:UIScreen.main.bounds.height - 150)
@@ -33,7 +33,7 @@ struct ContentView: View {
                         Image(systemName: "calendar")
                     }
                     .tag(TabItem.tab2)
-                
+
                 // 个人页面
                 ProfileView()
                     .padding(.bottom)

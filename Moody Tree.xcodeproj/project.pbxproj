@@ -29,6 +29,17 @@
 		F322A3232B1F5ACA009EAEAB /* BarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F322A3222B1F5ACA009EAEAB /* BarChart.swift */; };
 		F32700D92B2A378600AB7D8D /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32700D82B2A378600AB7D8D /* Connectivity.swift */; };
 		F32700DA2B2A378600AB7D8D /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32700D82B2A378600AB7D8D /* Connectivity.swift */; };
+		F32700E02B2E058700AB7D8D /* excited.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700DF2B2E058700AB7D8D /* excited.usdz */; };
+		F32700E72B2E05A800AB7D8D /* exhausted.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700E12B2E05A800AB7D8D /* exhausted.usdz */; };
+		F32700E82B2E05A800AB7D8D /* happy.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700E22B2E05A800AB7D8D /* happy.usdz */; };
+		F32700EA2B2E05A800AB7D8D /* sad.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700E42B2E05A800AB7D8D /* sad.usdz */; };
+		F32700EB2B2E05A800AB7D8D /* speechless.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700E52B2E05A800AB7D8D /* speechless.usdz */; };
+		F32700EC2B2E05A800AB7D8D /* tired.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700E62B2E05A800AB7D8D /* tired.usdz */; };
+		F32700EF2B2E05B700AB7D8D /* angry.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700ED2B2E05B700AB7D8D /* angry.usdz */; };
+		F32700F02B2E05B700AB7D8D /* begin.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F32700EE2B2E05B700AB7D8D /* begin.usdz */; };
+		F32700F52B2E1AC000AB7D8D /* ModelViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32700F42B2E1AC000AB7D8D /* ModelViewer.swift */; };
+		F346F6D32B2E2EEF00269C0A /* ARModelViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */; };
+		F346F6D52B2E352000269C0A /* fighting.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F346F6D42B2E352000269C0A /* fighting.usdz */; };
 		F392CCC82B25F2E400793276 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392CCC72B25F2E400793276 /* test.swift */; };
 		F3A2013D2B2058770083C06C /* AnnualStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */; };
 		F3A201402B205AF00083C06C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013F2B205AF00083C06C /* LineChart.swift */; };
@@ -122,6 +133,17 @@
 		F322A3202B1F57C8009EAEAB /* DataBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBlock.swift; sourceTree = "<group>"; };
 		F322A3222B1F5ACA009EAEAB /* BarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarChart.swift; sourceTree = "<group>"; };
 		F32700D82B2A378600AB7D8D /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		F32700DF2B2E058700AB7D8D /* excited.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = excited.usdz; path = ../../../../../../Downloads/excited.usdz; sourceTree = "<group>"; };
+		F32700E12B2E05A800AB7D8D /* exhausted.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = exhausted.usdz; path = ../../../../../../Downloads/exhausted.usdz; sourceTree = "<group>"; };
+		F32700E22B2E05A800AB7D8D /* happy.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = happy.usdz; path = ../../../../../../Downloads/happy.usdz; sourceTree = "<group>"; };
+		F32700E42B2E05A800AB7D8D /* sad.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = sad.usdz; path = ../../../../../../Downloads/sad.usdz; sourceTree = "<group>"; };
+		F32700E52B2E05A800AB7D8D /* speechless.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = speechless.usdz; path = ../../../../../../Downloads/speechless.usdz; sourceTree = "<group>"; };
+		F32700E62B2E05A800AB7D8D /* tired.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = tired.usdz; path = ../../../../../../Downloads/tired.usdz; sourceTree = "<group>"; };
+		F32700ED2B2E05B700AB7D8D /* angry.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = angry.usdz; path = ../../../../../../Downloads/angry.usdz; sourceTree = "<group>"; };
+		F32700EE2B2E05B700AB7D8D /* begin.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = begin.usdz; path = ../../../../../../Downloads/begin.usdz; sourceTree = "<group>"; };
+		F32700F42B2E1AC000AB7D8D /* ModelViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewer.swift; sourceTree = "<group>"; };
+		F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelViewer.swift; sourceTree = "<group>"; };
+		F346F6D42B2E352000269C0A /* fighting.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fighting.usdz; sourceTree = "<group>"; };
 		F392CCC72B25F2E400793276 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		F3A2012A2B1F858C0083C06C /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/Charts.framework; sourceTree = DEVELOPER_DIR; };
 		F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualStatisticsPage.swift; sourceTree = "<group>"; };
@@ -220,6 +242,8 @@
 		F322A2E52B1F0C33009EAEAB /* Moody Tree */ = {
 			isa = PBXGroup;
 			children = (
+				F32700F12B2E074400AB7D8D /* ARkit */,
+				F32700DE2B2E040600AB7D8D /* Models */,
 				F30107112B29963C00F11C4A /* Moody-Tree-Info.plist */,
 				F3A201692B2456D50083C06C /* Front Page */,
 				F3A201682B2456B70083C06C /* Personal Center */,
@@ -275,6 +299,31 @@
 				F32700D82B2A378600AB7D8D /* Connectivity.swift */,
 			);
 			path = share;
+			sourceTree = "<group>";
+		};
+		F32700DE2B2E040600AB7D8D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F346F6D42B2E352000269C0A /* fighting.usdz */,
+				F32700EE2B2E05B700AB7D8D /* begin.usdz */,
+				F32700ED2B2E05B700AB7D8D /* angry.usdz */,
+				F32700E12B2E05A800AB7D8D /* exhausted.usdz */,
+				F32700E22B2E05A800AB7D8D /* happy.usdz */,
+				F32700E42B2E05A800AB7D8D /* sad.usdz */,
+				F32700E52B2E05A800AB7D8D /* speechless.usdz */,
+				F32700E62B2E05A800AB7D8D /* tired.usdz */,
+				F32700DF2B2E058700AB7D8D /* excited.usdz */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F32700F12B2E074400AB7D8D /* ARkit */ = {
+			isa = PBXGroup;
+			children = (
+				F32700F42B2E1AC000AB7D8D /* ModelViewer.swift */,
+				F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */,
+			);
+			path = ARkit;
 			sourceTree = "<group>";
 		};
 		F3A201292B1F858C0083C06C /* Frameworks */ = {
@@ -508,8 +557,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32700EC2B2E05A800AB7D8D /* tired.usdz in Resources */,
+				F32700E02B2E058700AB7D8D /* excited.usdz in Resources */,
+				F32700EB2B2E05A800AB7D8D /* speechless.usdz in Resources */,
+				F32700E72B2E05A800AB7D8D /* exhausted.usdz in Resources */,
+				F32700E82B2E05A800AB7D8D /* happy.usdz in Resources */,
+				F32700F02B2E05B700AB7D8D /* begin.usdz in Resources */,
+				F32700EA2B2E05A800AB7D8D /* sad.usdz in Resources */,
+				F32700EF2B2E05B700AB7D8D /* angry.usdz in Resources */,
 				F322A2EF2B1F0C34009EAEAB /* Preview Assets.xcassets in Resources */,
 				F322A2EB2B1F0C34009EAEAB /* Assets.xcassets in Resources */,
+				F346F6D52B2E352000269C0A /* fighting.usdz in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,9 +603,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F346F6D32B2E2EEF00269C0A /* ARModelViewer.swift in Sources */,
 				F3A201AA2B24B9600083C06C /* CoreDataStack.swift in Sources */,
 				F3A201572B223FF80083C06C /* CreateRecord.swift in Sources */,
 				F32700D92B2A378600AB7D8D /* Connectivity.swift in Sources */,
+				F32700F52B2E1AC000AB7D8D /* ModelViewer.swift in Sources */,
 				F322A3232B1F5ACA009EAEAB /* BarChart.swift in Sources */,
 				F322A31F2B1F4C6E009EAEAB /* PersonalPage.swift in Sources */,
 				F322A3142B1F1F8C009EAEAB /* FrontPage.swift in Sources */,

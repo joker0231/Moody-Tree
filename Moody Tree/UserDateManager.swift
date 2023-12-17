@@ -135,7 +135,7 @@ struct UserDataManager {
     }
     
     func getAnilyData() -> [[String: [String: Int]]] {
-        return UserDefaults.standard.dictionary(forKey: "anidata") as? [[String: [String: Int]]] ?? [["1":["negativeEmotionCount":12,"positiveEmotionCount":33, "happyCount": 2, "excitedCount": 7, "fightingCount": 1, "sadCount": 7, "speechlessCount": 0, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]],["2":["negativeEmotionCount":1,"positiveEmotionCount":17, "happyCount": 3, "excitedCount": 5, "fightingCount": 0, "sadCount": 0, "speechlessCount": 9, "angryCount": 2, "tiredCount": 0, "exhaustedCount": 0]],["3":["negativeEmotionCount":24,"positiveEmotionCount":17, "happyCount": 0, "excitedCount": 0, "fightingCount": 0, "sadCount": 0, "speechlessCount": 0, "angryCount": 10, "tiredCount": 10, "exhaustedCount": 10]]]
+        return UserDefaults.standard.dictionary(forKey: "anidata") as? [[String: [String: Int]]] ?? [["1":["negativeEmotionCount":0,"positiveEmotionCount":0, "happyCount": 0, "excitedCount": 0, "fightingCount": 0, "sadCount": 0, "speechlessCount": 0, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]]]
     }
     
     func incrementMonthlyDataCount(forKey key: String) {

@@ -52,7 +52,7 @@ struct ProfileView: View {
                         Divider().frame(height: 60).background(Color("7B8B6F"))
                         SumBlock(data: monthlyData["negativeEmotionCount"] ?? 0, detail: "次小树遭受磨难", color: Color("7B8B6F"))
                         Divider().frame(height: 60).background(Color("7B8B6F"))
-                        SumBlock(data: monthlyData["totalCount"] ?? 0, detail: "天的辛勤灌溉", color: Color("7B8B6F"))
+                        SumBlock(data: monthlyData["totalCount"] ?? 0, detail: "次的辛勤灌溉", color: Color("7B8B6F"))
                     }
                     .padding(18)
                     .background(Color(red: 247/255, green: 251/255, blue: 246/255))

@@ -9,6 +9,23 @@ import Foundation
 import SwiftUI
 
 struct FrontPageView: View {
+    @State private var isARViewPresented = false
+    
+    func chooseModel() -> String {
+        let monthlyData = UserDataManager.shared.getMonthlyData()
+        let totalCount = monthlyData["totalCount"]
+        let validEmotions = ["happyCount", "excitedCount", "fightingCount", "sadCount", "speechlessCount", "angryCount", "tiredCount", "exhaustedCount"]
+
+        if totalCount! < 5 { return "begin" }
+        guard let maxMoodKey = validEmotions.max(by: { monthlyData[$0]! < monthlyData[$1]! }) else {
+            return "begin"
+        }
+        
+        let emotions = ["happyCount": "happy", "excitedCount": "excited", "fightingCount": "fighting", "sadCount": "sad", "speechlessCount": "speechless", "angryCount": "angry", "tiredCount": "tired", "exhaustedCount": "exhausted"]
+        
+        return emotions[maxMoodKey] ?? "begin"
+    }
+    
     var body: some View {
         ZStack {
             LinearGradient(gradient: Gradient(colors: [Color(red: 169/255, green: 196/255, blue: 148/255), .white]), startPoint: .top, endPoint: .bottom)
@@ -20,7 +37,24 @@ struct FrontPageView: View {
                     .foregroundColor(Color(red: 246/255, green: 251/255, blue: 240/255))
                     .padding(.top, 20)
 
-                Spacer().frame(height: UIScreen.main.bounds.height * 0.4)  // Placeholder for ARkit tree model
+                ModelViewer(modelName: chooseModel())
+                    .frame(height: UIScreen.main.bounds.height * 0.35)
+                    .navigationBarTitle("3D Model Viewer", displayMode: .inline)
+                
+                Button(action: {
+                    isARViewPresented.toggle()
+                }) {
+                    Text("AR Show")
+                        .padding()
+                        .background(Color(red: 132/255, green: 155/255, blue: 128/255))
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .font(.system(size: 16))
+                        .frame(height: UIScreen.main.bounds.height * 0.05)
+                }
+                .sheet(isPresented: $isARViewPresented, content: {
+                    ARModelViewer(modelName: chooseModel())
+                })
                 
                 CardView()
                     .padding(30)
