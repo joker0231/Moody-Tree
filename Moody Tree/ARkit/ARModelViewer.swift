@@ -5,73 +5,54 @@
 //  Created by 王雨晨 on 2023/12/17.
 //
 
-import Foundation
 import SwiftUI
 import ARKit
+import RealityKit
 
-struct ARModelViewer: UIViewControllerRepresentable {
-    class Coordinator: NSObject, ARSCNViewDelegate {
-        var parent: ARModelViewer
-
-        init(parent: ARModelViewer) {
-            self.parent = parent
+struct ARModelViewer: UIViewRepresentable {
+    @Binding var model: String?
+    func makeUIView(context: Context) -> ARView {
+        print("makeUIView modelName:\(model)")
+        let arView = ARView(frame: .zero)
+        let config = ARWorldTrackingConfiguration()
+        config.planeDetection = [.horizontal,.vertical]
+        config.environmentTexturing = .automatic
+        if ARWorldTrackingConfiguration.supportsSceneReconstruction(.mesh){
+            config.sceneReconstruction = .mesh
         }
+        arView.session.run(config)
 
-        func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
-            if let planeAnchor = anchor as? ARPlaneAnchor {
-                let planeNode = createPlaneNode(center: planeAnchor.center, extent: planeAnchor.extent)
-                node.addChildNode(planeNode)
+        return arView
+    }
 
-                if let modelURL = Bundle.main.url(forResource: parent.modelName, withExtension: "usdz") {
-                    let modelNode = createModelNode(url: modelURL)
-                    node.addChildNode(modelNode)
-                }
+    func updateUIView(_ uiView: ARView, context: Context) {
+        if let modelName = self.model{
+            print("update modelName:\(modelName)")
+            // Load the model into a ModelEntity
+            guard let modelEntity = try? ModelEntity.loadModel(named: modelName + ".usdz") else {
+                print("Failed to load model")
+                return
+            }
+            
+            if modelName == "fighting"{
+                modelEntity.setScale(SIMD3<Float>(repeating: 0.1), relativeTo: nil)
+                let position = SIMD3<Float>(0, -3, -6) // Adjust the position as needed
+                let anchorEntity = AnchorEntity(world: position)
+                anchorEntity.addChild(modelEntity)
+                uiView.scene.addAnchor(anchorEntity)
+            }else if modelName == "happy" || modelName == "begin"{
+                modelEntity.setScale(SIMD3<Float>(repeating: 0.008), relativeTo: nil)
+                let position = SIMD3<Float>(0, -3, -6) // Adjust the position as needed
+                let anchorEntity = AnchorEntity(world: position)
+                anchorEntity.addChild(modelEntity)
+                uiView.scene.addAnchor(anchorEntity)
+            }else{
+                modelEntity.setScale(SIMD3<Float>(repeating: 0.015), relativeTo: nil)
+                let position = SIMD3<Float>(0, -3, -6) // Adjust the position as needed
+                let anchorEntity = AnchorEntity(world: position)
+                anchorEntity.addChild(modelEntity)
+                uiView.scene.addAnchor(anchorEntity)
             }
         }
-
-        private func createPlaneNode(center: simd_float3, extent: simd_float3) -> SCNNode {
-            let plane = SCNPlane(width: CGFloat(extent.x), height: CGFloat(extent.z))
-            let planeNode = SCNNode(geometry: plane)
-            planeNode.position = SCNVector3(center)
-            planeNode.eulerAngles.x = -.pi / 2
-            planeNode.opacity = 0.25
-            return planeNode
-        }
-
-        private func createModelNode(url: URL) -> SCNNode {
-            let referenceNode = SCNReferenceNode(url: url)
-            referenceNode?.load()
-
-            let wrapperNode = SCNNode()
-            wrapperNode.addChildNode(referenceNode!)
-            return wrapperNode
-        }
-    }
-
-    let modelName: String
-
-    func makeCoordinator() -> Coordinator {
-        Coordinator(parent: self)
-    }
-
-    func makeUIViewController(context: Context) -> UIViewController {
-        let viewController = UIViewController()
-        let arView = ARSCNView()
-        arView.delegate = context.coordinator
-        arView.autoenablesDefaultLighting = true
-
-        let scene = SCNScene()
-        arView.scene = scene
-
-        let arConfiguration = ARWorldTrackingConfiguration()
-        arConfiguration.planeDetection = .horizontal
-        arView.session.run(arConfiguration)
-
-        viewController.view.addSubview(arView)
-        return viewController
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        // Update code if needed
     }
 }

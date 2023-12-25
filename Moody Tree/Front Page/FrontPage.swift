@@ -10,20 +10,28 @@ import SwiftUI
 
 struct FrontPageView: View {
     @State private var isARViewPresented = false
+    @State private var model:String?
     
-    func chooseModel() -> String {
+    func chooseModel(){
         let monthlyData = UserDataManager.shared.getMonthlyData()
         let totalCount = monthlyData["totalCount"]
         let validEmotions = ["happyCount", "excitedCount", "fightingCount", "sadCount", "speechlessCount", "angryCount", "tiredCount", "exhaustedCount"]
 
-        if totalCount! < 5 { return "begin" }
+        if totalCount! < 4 {
+            model = "happy"
+            return
+        }
+        if totalCount! < 7 {
+            model = "mid"
+            return
+        }
         guard let maxMoodKey = validEmotions.max(by: { monthlyData[$0]! < monthlyData[$1]! }) else {
-            return "begin"
+            model = "begin"
+            return
         }
         
         let emotions = ["happyCount": "happy", "excitedCount": "excited", "fightingCount": "fighting", "sadCount": "sad", "speechlessCount": "speechless", "angryCount": "angry", "tiredCount": "tired", "exhaustedCount": "exhausted"]
-        
-        return emotions[maxMoodKey] ?? "begin"
+        model = emotions[maxMoodKey] ?? "begin"
     }
     
     var body: some View {
@@ -37,7 +45,7 @@ struct FrontPageView: View {
                     .foregroundColor(Color(red: 246/255, green: 251/255, blue: 240/255))
                     .padding(.top, 20)
 
-                ModelViewer(modelName: chooseModel())
+                ModelViewer(modelName: model ?? "begin")
                     .frame(height: UIScreen.main.bounds.height * 0.35)
                     .navigationBarTitle("3D Model Viewer", displayMode: .inline)
                 
@@ -53,7 +61,7 @@ struct FrontPageView: View {
                         .frame(height: UIScreen.main.bounds.height * 0.05)
                 }
                 .sheet(isPresented: $isARViewPresented, content: {
-                    ARModelViewer(modelName: chooseModel())
+                    ARModelViewer(model: self.$model)
                 })
                 
                 CardView()
@@ -64,6 +72,9 @@ struct FrontPageView: View {
                 PlusButton()
                     .offset(x:10, y:-65)
             }
+        }
+        .onAppear{
+            chooseModel()
         }
     }
 }

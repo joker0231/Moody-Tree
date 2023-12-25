@@ -34,7 +34,7 @@ struct ProfileView: View {
                 
                 ScrollView {
                     // 头像和昵称
-                    Image(systemName: "person.circle.fill") // 需要替换为真实的头像
+                    Image("头像")
                         .resizable()
                         .frame(width: 80, height: 80)
                         .clipShape(Circle())

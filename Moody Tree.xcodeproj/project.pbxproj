@@ -40,6 +40,7 @@
 		F32700F52B2E1AC000AB7D8D /* ModelViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32700F42B2E1AC000AB7D8D /* ModelViewer.swift */; };
 		F346F6D32B2E2EEF00269C0A /* ARModelViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */; };
 		F346F6D52B2E352000269C0A /* fighting.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F346F6D42B2E352000269C0A /* fighting.usdz */; };
+		F346F6D92B39736700269C0A /* mid.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F346F6D82B39736700269C0A /* mid.usdz */; };
 		F392CCC82B25F2E400793276 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392CCC72B25F2E400793276 /* test.swift */; };
 		F3A2013D2B2058770083C06C /* AnnualStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */; };
 		F3A201402B205AF00083C06C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013F2B205AF00083C06C /* LineChart.swift */; };
@@ -144,6 +145,7 @@
 		F32700F42B2E1AC000AB7D8D /* ModelViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelViewer.swift; sourceTree = "<group>"; };
 		F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelViewer.swift; sourceTree = "<group>"; };
 		F346F6D42B2E352000269C0A /* fighting.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fighting.usdz; sourceTree = "<group>"; };
+		F346F6D82B39736700269C0A /* mid.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mid.usdz; sourceTree = "<group>"; };
 		F392CCC72B25F2E400793276 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		F3A2012A2B1F858C0083C06C /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/Charts.framework; sourceTree = DEVELOPER_DIR; };
 		F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualStatisticsPage.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		F32700DE2B2E040600AB7D8D /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				F346F6D82B39736700269C0A /* mid.usdz */,
 				F346F6D42B2E352000269C0A /* fighting.usdz */,
 				F32700EE2B2E05B700AB7D8D /* begin.usdz */,
 				F32700ED2B2E05B700AB7D8D /* angry.usdz */,
@@ -559,6 +562,7 @@
 			files = (
 				F32700EC2B2E05A800AB7D8D /* tired.usdz in Resources */,
 				F32700E02B2E058700AB7D8D /* excited.usdz in Resources */,
+				F346F6D92B39736700269C0A /* mid.usdz in Resources */,
 				F32700EB2B2E05A800AB7D8D /* speechless.usdz in Resources */,
 				F32700E72B2E05A800AB7D8D /* exhausted.usdz in Resources */,
 				F32700E82B2E05A800AB7D8D /* happy.usdz in Resources */,
