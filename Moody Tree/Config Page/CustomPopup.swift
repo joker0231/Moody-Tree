@@ -29,10 +29,12 @@ struct CustomPopup<Content: View>: View {
                     Text(title)
                         .font(.system(size: 20))
                         .padding(.top,20)
+                        .foregroundColor(Color.black)
                     
                     content
                     .font(.body)
                     .padding(.horizontal)
+                    .foregroundColor(Color.black)
                     
 
                     Button(buttonText) {

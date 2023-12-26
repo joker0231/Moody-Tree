@@ -26,6 +26,7 @@ struct CalendarView: View {
     let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM.dd"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         return formatter
     }()
 
@@ -35,7 +36,7 @@ struct CalendarView: View {
                 Button("跳转到今天") {
                     proxy.scrollTo(2, anchor: .center)
                 }
-                .padding(.bottom,0)
+                .padding(.top,15)
                 .foregroundColor(Color("628C41"))
                 .frame(maxWidth: .infinity, alignment: .top)
                 
@@ -58,7 +59,15 @@ struct CalendarView: View {
                                 ScrollView(.horizontal, showsIndicators: false) {
                                     HStack(spacing: 15) {
                                         // 过滤出当前日期对应的 moodRecord 数据
-                                        let filteredMoods = moodRecord.filter { Calendar.current.isDate($0.timestamp!, inSameDayAs: currentDate) }
+                                        let filteredMoods = moodRecord.filter { mood in
+                                            if let timestamp = mood.timestamp {
+                                                let utcTimestamp = timestamp.addingTimeInterval(-TimeInterval(TimeZone(identifier: "Asia/Shanghai")!.secondsFromGMT(for: timestamp)))
+                                                
+                                                // 判断日期是否相同
+                                                return Calendar.current.isDate(utcTimestamp, inSameDayAs: currentDate)
+                                            }
+                                            return false
+                                        }
                                         ForEach(filteredMoods) { mood in
                                             // 创建并显示每一条 UserMood 数据的视图
                                             let imageDatas = mood.images as? [Data] ?? []

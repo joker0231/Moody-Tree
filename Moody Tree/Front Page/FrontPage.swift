@@ -18,7 +18,7 @@ struct FrontPageView: View {
         let validEmotions = ["happyCount", "excitedCount", "fightingCount", "sadCount", "speechlessCount", "angryCount", "tiredCount", "exhaustedCount"]
 
         if totalCount! < 4 {
-            model = "happy"
+            model = "begin"
             return
         }
         if totalCount! < 7 {
@@ -43,11 +43,10 @@ struct FrontPageView: View {
                 Text("MOODY TREE")
                     .font(.system(size: 16))
                     .foregroundColor(Color(red: 246/255, green: 251/255, blue: 240/255))
-                    .padding(.top, 20)
+                    .padding(.top, 45)
 
                 ModelViewer(modelName: model ?? "begin")
-                    .frame(height: UIScreen.main.bounds.height * 0.35)
-                    .navigationBarTitle("3D Model Viewer", displayMode: .inline)
+                    .frame(height: UIScreen.main.bounds.height * 0.3)
                 
                 Button(action: {
                     isARViewPresented.toggle()
@@ -65,9 +64,10 @@ struct FrontPageView: View {
                 })
                 
                 CardView()
-                    .padding(30)
+                    .padding(.horizontal,30)
                     .cornerRadius(10)
                     .shadow(radius: 5)
+                    .frame(height: UIScreen.main.bounds.height * 0.37)
 
                 PlusButton()
                     .offset(x:10, y:-65)

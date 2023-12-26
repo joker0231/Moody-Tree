@@ -40,6 +40,9 @@ struct CreatePageView: View {
     @State private var isImagePickerPresented: Bool = false
     @State private var showAlert = false
     @State private var errorMessage: String?
+    @State private var showNavigationBar = false
+    @State private var isKeyboardVisible: Bool = false
+    @State private var keyboardHeight: CGFloat = 0
     var title: String
     
     private var isDisabled: Bool {
@@ -53,7 +56,6 @@ struct CreatePageView: View {
 
         return false
     }
-
     
     private func showSaveAlert() {
         if isDisabled {
@@ -67,6 +69,7 @@ struct CreatePageView: View {
             self.showAlert = true
         } else {
             self.presentationMode.wrappedValue.dismiss()
+            showNavigationBar = true
             let preMoodRecordCount = UserDefaults.standard.integer(forKey: "moodRecordCount")
             UserDataManager.shared.updatemoodRecordCount(moodRecordCount: preMoodRecordCount+1)
             UserDataManager.shared.updateCheckInStatus()
@@ -80,6 +83,10 @@ struct CreatePageView: View {
         }
     }
     
+    private func hideKeyboard() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -91,6 +98,7 @@ struct CreatePageView: View {
                         HStack{
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
+                                showNavigationBar = true
                             }) {
                                 Image(systemName: "arrowshape.left.fill")
                                     .resizable()
@@ -117,7 +125,13 @@ struct CreatePageView: View {
                                     TextField("标题", text: $titleText)
                                         .font(.system(size: 22, weight: .bold))
                                         .padding(.horizontal, 10)
+                                        .foregroundColor(Color.black)
                                         .frame(width: UIScreen.main.bounds.width * 0.8)
+                                        .onTapGesture {
+                                            // 点击输入框时显示键盘
+                                            isKeyboardVisible = true
+                                        }
+                                        .padding(.top,isKeyboardVisible ? keyboardHeight / 2 : 0)
                                 }
                                 
                                 Divider().frame(height: 1).background(Color("7B8B6F"))
@@ -125,11 +139,17 @@ struct CreatePageView: View {
                                 // 输入区域 - 记录
                                 ScrollView {
                                     TextEditor(text: $descriptionText)
-                                        .font(.system(size: 16))
+                                        .font(.system(size: 18))
+                                        .foregroundColor(Color.black)
                                         .frame(width: UIScreen.main.bounds.width * 0.8, height:UIScreen.main.bounds.height * 0.5)
-                                        .background(Color.clear)
+                                        .background(Color.white)
+                                        .scrollContentBackground(.hidden)
                                         .multilineTextAlignment(.leading)
                                         .lineSpacing(10)
+                                        .onTapGesture {
+                                            // 点击输入框时显示键盘
+                                            isKeyboardVisible = true
+                                        }
                                 }
                                 
                                 ScrollView(.horizontal, showsIndicators: false) {
@@ -222,10 +242,31 @@ struct CreatePageView: View {
                 }
             }
         }
-            .navigationBarHidden(true)
-            .alert(isPresented: $showAlert) {
-                Alert(title: Text("🔔"), message: Text(errorMessage ?? "可不能什么都不填哦").font(.system(size: 16)), dismissButton: .default(Text("知道啦")))
+        .gesture(
+            // 添加一个点击手势来隐藏键盘
+            TapGesture()
+                .onEnded { _ in
+                    hideKeyboard()
+                }
+        )
+        .onAppear {
+            // 监听键盘的可见性变化
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { notification in
+                if let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect {
+                    keyboardHeight = keyboardFrame.height
+                    isKeyboardVisible = true
+                }
             }
+
+            NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
+                isKeyboardVisible = false
+            }
+        }
+        .navigationBarHidden(true)
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text("🔔"), message: Text(errorMessage ?? "可不能什么都不填哦").font(.system(size: 16)), dismissButton: .default(Text("知道啦")))
+        }
+        .toolbar(showNavigationBar ? .visible : .hidden, for: .tabBar)
     }
 }
 
@@ -294,7 +335,6 @@ struct UploadedImageView: View {
         }
     }
 }
-
 
 struct CreatePageView_Previews: PreviewProvider {
     static var previews: some View {

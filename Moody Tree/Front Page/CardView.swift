@@ -50,6 +50,7 @@ struct CardView: View {
             }
             Text(quote?.content ?? "--")
                 .font(.system(size: 16))
+                .foregroundColor(.black)
                 .lineSpacing(3)
             HStack {
                 Spacer()

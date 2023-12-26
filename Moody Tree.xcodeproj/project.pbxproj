@@ -41,7 +41,6 @@
 		F346F6D32B2E2EEF00269C0A /* ARModelViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */; };
 		F346F6D52B2E352000269C0A /* fighting.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F346F6D42B2E352000269C0A /* fighting.usdz */; };
 		F346F6D92B39736700269C0A /* mid.usdz in Resources */ = {isa = PBXBuildFile; fileRef = F346F6D82B39736700269C0A /* mid.usdz */; };
-		F392CCC82B25F2E400793276 /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = F392CCC72B25F2E400793276 /* test.swift */; };
 		F3A2013D2B2058770083C06C /* AnnualStatisticsPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */; };
 		F3A201402B205AF00083C06C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2013F2B205AF00083C06C /* LineChart.swift */; };
 		F3A201422B2060860083C06C /* PieChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A201412B2060860083C06C /* PieChart.swift */; };
@@ -146,7 +145,6 @@
 		F346F6D22B2E2EEF00269C0A /* ARModelViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARModelViewer.swift; sourceTree = "<group>"; };
 		F346F6D42B2E352000269C0A /* fighting.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = fighting.usdz; sourceTree = "<group>"; };
 		F346F6D82B39736700269C0A /* mid.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; path = mid.usdz; sourceTree = "<group>"; };
-		F392CCC72B25F2E400793276 /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
 		F3A2012A2B1F858C0083C06C /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS16.4.sdk/System/Library/Frameworks/Charts.framework; sourceTree = DEVELOPER_DIR; };
 		F3A2013C2B2058770083C06C /* AnnualStatisticsPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnualStatisticsPage.swift; sourceTree = "<group>"; };
 		F3A2013F2B205AF00083C06C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
@@ -264,7 +262,6 @@
 				F3A2016A2B24B0DC0083C06C /* Model.xcdatamodeld */,
 				F3A201A92B24B9600083C06C /* CoreDataStack.swift */,
 				F3A201AB2B24C80D0083C06C /* DataOperation.swift */,
-				F392CCC72B25F2E400793276 /* test.swift */,
 				F301070F2B28C0F700F11C4A /* UserDateManager.swift */,
 			);
 			path = "Moody Tree";
@@ -617,7 +614,6 @@
 				F322A3142B1F1F8C009EAEAB /* FrontPage.swift in Sources */,
 				F3A2014F2B20D9040083C06C /* CustomPopup.swift in Sources */,
 				F3A201AC2B24C80D0083C06C /* DataOperation.swift in Sources */,
-				F392CCC82B25F2E400793276 /* test.swift in Sources */,
 				F3A2015A2B2241C70083C06C /* RecordPreview.swift in Sources */,
 				F3A201522B2218020083C06C /* Calendar.swift in Sources */,
 				F3A2016C2B24B0DC0083C06C /* Model.xcdatamodeld in Sources */,

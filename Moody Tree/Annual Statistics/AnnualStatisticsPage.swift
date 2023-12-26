@@ -23,6 +23,7 @@ struct AnnualStatisticsView: View {
     
     
     @State private var LineChartdata: [LineMarkData] = []
+    @State private var showNavigationBar = false
     
     var body: some View {
         NavigationView{
@@ -34,6 +35,7 @@ struct AnnualStatisticsView: View {
                     HStack{
                         Button(action: {
                             self.presentationMode.wrappedValue.dismiss()
+                            showNavigationBar = true
                         }) {
                             Image(systemName: "arrowshape.left.fill")
                                 .resizable()
@@ -89,6 +91,7 @@ struct AnnualStatisticsView: View {
             }
         }
             .navigationBarHidden(true)
+            .toolbar(showNavigationBar ? .visible : .hidden, for: .tabBar)
             .onAppear{
                 LineChartdata = UserDataManager.shared.createLineDataArray()
             }

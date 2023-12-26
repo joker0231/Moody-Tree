@@ -13,6 +13,7 @@ struct RecordPreviewView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @Environment(\.managedObjectContext) var managedObjectContext
     @State private var deleteRecord = false
+    @State private var showNavigationBar = false
     var date: Date
     var emotionDescription: String?
     var title: String
@@ -24,6 +25,7 @@ struct RecordPreviewView: View {
     var date1: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd"
+        formatter.timeZone = TimeZone(abbreviation: "UTC")
         return formatter.string(from: date)
     }
     
@@ -62,6 +64,7 @@ struct RecordPreviewView: View {
                         HStack{
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
+                                showNavigationBar = true
                             }) {
                                 Image(systemName: "arrowshape.left.fill")
                                     .resizable()
@@ -84,6 +87,7 @@ struct RecordPreviewView: View {
                                 HStack {
                                     Text(date1)
                                         .font(.system(size: 14))
+                                        .foregroundColor(Color.black)
                                         .frame(width: 50, alignment: .topLeading)
 
                                     Spacer()
@@ -92,6 +96,7 @@ struct RecordPreviewView: View {
                                         VStack{
                                             Text(emotionDescription!)
                                                 .font(.system(size: 14))
+                                                .foregroundColor(Color.black)
                                                 .padding(2)
                                         }
                                         .border(Color.black, width: 1)
@@ -111,17 +116,18 @@ struct RecordPreviewView: View {
                                     }
                                     .frame(width: 50)
                                 }
-                                .padding(.top,20)
 
                                 ScrollView{
                                     Text(title)
                                         .font(.system(size: 22))
                                         .fontWeight(.bold)
+                                        .foregroundColor(Color.black)
                                         .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .topLeading)
                                         .multilineTextAlignment(.leading)
 
                                     Text(description)
                                         .font(.system(size: 16))
+                                        .foregroundColor(Color.black)
                                         .frame(width: UIScreen.main.bounds.width * 0.8, alignment: .topLeading)
                                         .lineLimit(nil)
                                         .padding(.vertical)
@@ -150,7 +156,7 @@ struct RecordPreviewView: View {
                         .overlay(
                             CustomPopup(
                                 title: "🌱",
-                                content: Text("确定要删除这条记录吗？"),
+                                content: Text("确定要删除这条记录吗？").foregroundColor(Color.black),
                                 isPresented: $deleteRecord,
                                 onConfirm: {
                                     let preMoodRecordCount = UserDefaults.standard.integer(forKey: "moodRecordCount")
@@ -160,6 +166,8 @@ struct RecordPreviewView: View {
                                     }else if style == .note {
                                         deleteRecordWithID(id: id,entityName: "UserNote")
                                     }
+                                    UserDefaults.standard.set("暂无数据", forKey: "todayMood")
+                                    showNavigationBar = true
                                 },
                                 buttonText: "确定"
                             )
@@ -170,6 +178,7 @@ struct RecordPreviewView: View {
             }
         }
             .navigationBarHidden(true)
+            .toolbar(showNavigationBar ? .visible : .hidden, for: .tabBar)
     }
 }
 

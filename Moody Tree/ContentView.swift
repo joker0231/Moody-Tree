@@ -16,34 +16,39 @@ struct ContentView: View {
     @State private var selectedTab: TabItem? = nil
 
     var body: some View {
-        NavigationView{
-            TabView() {
-                // 树叶页面
+        TabView() {
+            // 树叶页面
+            NavigationView{
                 FrontPageView()
-                    .frame(height:UIScreen.main.bounds.height)
-                    .tabItem {
-                        Image(systemName: "leaf.fill")
-                    }
-                    .tag(TabItem.tab1)
-
-                // 日历页面
-                CalendarView()
-                    .frame(height:UIScreen.main.bounds.height - 150)
-                    .tabItem {
-                        Image(systemName: "calendar")
-                    }
-                    .tag(TabItem.tab2)
-
-                // 个人页面
-                ProfileView()
-                    .padding(.bottom)
-                    .tabItem {
-                        Image(systemName: "person.fill")
-                    }
-                    .tag(TabItem.tab3)
             }
-            .accentColor(Color(red: 132/255, green: 155/255, blue: 128/255))      // 设置 TabItem 的颜色
+            .frame(height:UIScreen.main.bounds.height)
+            .tabItem {
+                Image(systemName: "leaf.fill")
+            }
+            .tag(TabItem.tab1)
+
+            // 日历页面
+            
+            NavigationView{
+                CalendarView()
+            }
+            .frame(height:UIScreen.main.bounds.height)
+            .tabItem {
+                Image(systemName: "calendar")
+            }
+            .tag(TabItem.tab2)
+
+            // 个人页面
+            NavigationView{
+                ProfileView()
+            }
+            .frame(height:UIScreen.main.bounds.height)
+            .tabItem {
+                Image(systemName: "person.fill")
+            }
+            .tag(TabItem.tab3)
         }
+        .accentColor(Color(red: 132/255, green: 155/255, blue: 128/255))      // 设置 TabItem 的颜色
     }
 }
 

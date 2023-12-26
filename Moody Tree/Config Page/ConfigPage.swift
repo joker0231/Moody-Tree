@@ -17,6 +17,7 @@ struct SettingsItem: View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
                 .font(.system(size: 18))
+                .foregroundColor(Color.black)
                 .onTapGesture {
                     action()
                 }
@@ -35,6 +36,7 @@ struct ConfigPageView: View {
     @State private var isPhotoAlertPresented = false
     @State private var newNickname: String = ""
     @State private var nickname: String = "小树"
+    @State private var showNavigationBar = false
     
     var body: some View {
         NavigationView {
@@ -47,6 +49,7 @@ struct ConfigPageView: View {
                         HStack{
                             Button(action: {
                                 self.presentationMode.wrappedValue.dismiss()
+                                showNavigationBar = true
                             }) {
                                 Image(systemName: "arrowshape.left.fill")
                                     .resizable()
@@ -96,6 +99,7 @@ struct ConfigPageView: View {
                                             TextField("小树的名字", text: $newNickname)
                                                 .textFieldStyle(RoundedBorderTextFieldStyle())
                                                 .padding()
+                                                .scrollContentBackground(.hidden)
                                         ,
                                         isPresented: $isNicknameAlertPresented,
                                         onConfirm: {
@@ -147,6 +151,7 @@ struct ConfigPageView: View {
             }
         }
             .navigationBarHidden(true)
+            .toolbar(showNavigationBar ? .visible : .hidden, for: .tabBar)
     }
 }
 
