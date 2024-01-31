@@ -24,7 +24,18 @@ struct LineMarkData: Identifiable {
 }
 
 struct LineMarkChartView: View {
-    var data: [LineMarkData]
+    let data = [
+        LineMarkData(mood: "negativeEmotion", month: 1, count: 11),
+        LineMarkData(mood: "positiveEmotion", month: 1, count: 10),
+        LineMarkData(mood: "negativeEmotion", month: 2, count: 12),
+        LineMarkData(mood: "positiveEmotion", month: 2, count: 3),
+        LineMarkData(mood: "negativeEmotion", month: 3, count: 10),
+        LineMarkData(mood: "positiveEmotion", month: 3, count: 13),
+        LineMarkData(mood: "negativeEmotion", month: 4, count: 6),
+        LineMarkData(mood: "positiveEmotion", month: 4, count: 18),
+        LineMarkData(mood: "negativeEmotion", month: 5, count: 10),
+        LineMarkData(mood: "positiveEmotion", month: 5, count: 10),
+    ]
     
     var body: some View {
         Chart(data) {

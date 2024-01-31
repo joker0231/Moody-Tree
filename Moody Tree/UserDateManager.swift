@@ -135,7 +135,7 @@ struct UserDataManager {
     }
     
     func getAnilyData() -> [[String: [String: Int]]] {
-        return UserDefaults.standard.dictionary(forKey: "anidata") as? [[String: [String: Int]]] ?? [["1":["negativeEmotionCount":0,"positiveEmotionCount":0, "happyCount": 0, "excitedCount": 0, "fightingCount": 0, "sadCount": 0, "speechlessCount": 0, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]]]
+        return UserDefaults.standard.dictionary(forKey: "anidata") as? [[String: [String: Int]]] ?? [["1":["negativeEmotionCount":11,"positiveEmotionCount":10, "happyCount": 5, "excitedCount": 5, "fightingCount": 9, "sadCount": 0, "speechlessCount": 3, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]],["2":["negativeEmotionCount":12,"positiveEmotionCount":3, "happyCount": 2, "excitedCount": 1, "fightingCount": 0, "sadCount": 3, "speechlessCount": 4, "angryCount": 3, "tiredCount": 0, "exhaustedCount": 2]],["3":["negativeEmotionCount":10,"positiveEmotionCount":13, "happyCount": 7, "excitedCount": 3, "fightingCount": 3, "sadCount": 3, "speechlessCount": 3, "angryCount": 1, "tiredCount": 1, "exhaustedCount": 2]],["4":["negativeEmotionCount":6,"positiveEmotionCount":18, "happyCount": 0, "excitedCount": 9, "fightingCount": 9, "sadCount": 0, "speechlessCount": 6, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]],["5":["negativeEmotionCount":10,"positiveEmotionCount":10, "happyCount": 5, "excitedCount": 3, "fightingCount": 2, "sadCount": 10, "speechlessCount": 0, "angryCount": 0, "tiredCount": 0, "exhaustedCount": 0]]] //这里是由于年度数据必须要使用一个月以上，因此放了一个假数据方便展示
     }
     
     func incrementMonthlyDataCount(forKey key: String) {
@@ -181,6 +181,7 @@ struct UserDataManager {
             }
         }
 
+        print("lineMarkDataArray: \(lineMarkDataArray)")
         return lineMarkDataArray
     }
     

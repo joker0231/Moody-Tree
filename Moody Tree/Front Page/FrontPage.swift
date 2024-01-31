@@ -18,7 +18,7 @@ struct FrontPageView: View {
         let validEmotions = ["happyCount", "excitedCount", "fightingCount", "sadCount", "speechlessCount", "angryCount", "tiredCount", "exhaustedCount"]
 
         if totalCount! < 4 {
-            model = "begin"
+            model = "happy"
             return
         }
         if totalCount! < 7 {

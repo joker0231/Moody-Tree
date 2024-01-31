@@ -58,7 +58,7 @@ struct AnnualStatisticsView: View {
                     ScrollView {
                         // 月度情绪统计
                         DataBlock(title: "正面情绪VS负面情绪", detail: UserDataManager.shared.analyzeEmotionData(), color: Color("7B8B6F")){
-                            LineMarkChartView(data: LineChartdata)
+                            LineMarkChartView()
                         }
                             .background(Color(red: 247/255, green: 251/255, blue: 246/255))
                             .cornerRadius(10)

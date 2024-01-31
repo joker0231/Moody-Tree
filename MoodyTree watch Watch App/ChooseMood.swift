@@ -22,18 +22,17 @@ struct MoodSelectionView: View {
             Text("已选择心情：\(selectedMood ?? "暂无")")
                 .font(.system(size: 15))
                 .foregroundColor(.white)
-                .padding(.top, 40)
             ScrollView {
                 moodItems
             }
-            .frame(width: watchWidth,height: watchHeight * 0.55)
+            .frame(width: watchWidth,height: watchHeight * 0.5)
 
             Button(action: {
                 // 处理保存按钮点击逻辑
                 saveButtonTapped()
             }) {
                 Text("保存")
-                    .font(.system(size: 17))
+                    .font(.system(size: 15))
                     .foregroundColor(.white)
             }
             .frame(width: watchWidth * 0.8 ,height: watchHeight * 0.2)

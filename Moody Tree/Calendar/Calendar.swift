@@ -73,7 +73,15 @@ struct CalendarView: View {
                                             let imageDatas = mood.images as? [Data] ?? []
                                             NoteView(style: .mood, title: mood.title!, emotionDescription: mood.mood!, date: mood.timestamp!, description:mood.descriptionText!, images: imageDatas,id: mood.id!)
                                         }
-                                        let filteredNotes = noteRecord.filter { Calendar.current.isDate($0.timestamp!, inSameDayAs: currentDate) }
+                                        let filteredNotes = noteRecord.filter { note in
+                                            if let timestamp = note.timestamp {
+                                                let utcTimestamp = timestamp.addingTimeInterval(-TimeInterval(TimeZone(identifier: "Asia/Shanghai")!.secondsFromGMT(for: timestamp)))
+                                                
+                                                // 判断日期是否相同
+                                                return Calendar.current.isDate(utcTimestamp, inSameDayAs: currentDate)
+                                            }
+                                            return false
+                                        }
                                         ForEach(filteredNotes) { note in
                                             // 创建并显示每一条 UserMood 数据的视图
                                             let imageDatas = note.images as? [Data] ?? []
